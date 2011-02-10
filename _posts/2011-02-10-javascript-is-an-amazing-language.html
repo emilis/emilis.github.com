@@ -1,0 +1,147 @@
+---
+layout: post
+title: JavaScript: function scope is awesome
+---
+
+<p>When I changed jobs recently I bet on working as a JavaScript developer.</p>
+
+<p>Part of my reasoning was that JavaScript is such a dynamic language that no matter what enterpricey or badly designed systems I will encounter, I will be able to program my way out of them and restore my sanity :-)</p>
+
+<p>Today it seems to me that I must have been right.</p>
+
+<p>On my new project I have to use a mix of Dojo, Sencha/ExtJS and ArcGIS libraries. Let me say that I am not very impressed by ExtJS. It is too bloated for my tastes.</p>
+
+<p>Also I blame on Dojo and ExtJS documentation the fact that I found my colleagues code littered with object literals nesting 16+ levels deep. Because that's what you get if you start from a code example in documentation.</p>
+
+<p>But with JavaScript it's fixable. And function scope is a very powerful tool.</p>
+
+<p>That's what I did to refactor the code:</p>
+
+<h3>Fix 1: adhoc function calls instead of object literals for module code</h3>
+
+<p>Lets say we have this module definition in code:</p>
+
+<pre>
+    {
+        method1: function(params) {
+            // some code
+        },
+
+        method2: function(params) {
+            // some code
+        }
+    }
+</pre>
+
+<p>Looks nice until the methods grow big with UI element definitions, event handlers, etc.. Then you have a mess.</p>
+
+<p>So I changed it to this:</p>
+
+<pre>
+    (function() {
+
+        // I chose "exports" for similarity to CommonJS:
+        var exports = {};
+
+        exports.method1 = function(params) {
+            // some code
+        };
+
+        exports.method2 = function(params) {
+            // some code
+        };
+
+        // Bonus: private static functions.
+        // .
+        function internalFunction() {
+            // some code
+        }
+
+        // Bonus: private static vars.
+        // Helped me clean up some of this._varName vars from our module code.
+        var internalVar;
+        
+        return exports;
+    })(); // This calls the function we just created and returns its result (exports object).
+</pre>
+
+<p>Seems longer but it is better structured, reduces deep nesting and lets you hide some vars and functions inside the module.</p>
+
+
+<h3>Fix 2: that = this</h3>
+
+<p>Dojo includes a nice mechanism for injecting context into functions: dojo.hitch().</p>
+
+<p>However I found this abused in our code. So I remembered the good old trick and used it instead:</p>
+
+<pre>
+    someMethod = function() {
+
+        var that = this;
+
+        ...
+
+        var someEventHandler = function() {
+
+            // We need to go deeper for you to appreciate this (I mean that):
+            var anotherEventHandler = function() {
+
+                that.callSomeOtherMethod();
+                // At this level it saved me 2 calls to dojo.hitch().
+            }
+        }
+
+        ...
+    }
+</pre>
+
+
+<h3>Fix 3: put your functions wherever you want</h3>
+
+<p>I needed to write code for a widget. The code involved Module definition (Ext.data.JsonStore), View definition (Ext.XTemplate) and widget definition:</p>
+
+<pre>
+    var createMyWidget = function() {
+
+        // Model (not shown)
+        // View (not shown)
+
+        // Widget mixed with event handlers:
+        return Ext.Container({
+            ...
+            listeners: {
+                click: function() {
+                    // lots of event handling here
+                }
+            }
+        });
+    }
+</pre>
+
+<p>The "click" and other event handlers didn't look nice enough, so I decided to move them into separate functions. And I did. To preserve code reading flow I moved them below the return statement:</p>
+
+<pre>
+    var createMyWidget = function() {
+        
+        // Model (not shown)
+        // View (not shown)
+
+        // Widget:
+        return Ext.Container({
+            ...
+            listeners: {
+                click: onClick // defined below
+            }
+        });
+
+        // Event handlers:
+        function onClick() {
+            // lots of event handling here
+        }
+    }
+</pre>
+
+
+<p>Seems like a trivial thing, but very nice. Now I feel more confident about managing complexity in my work.</p>
+
+<p>The only thing that can still slow me down? The same zombie that haunts every web developer: Internet Explorer.</p>
