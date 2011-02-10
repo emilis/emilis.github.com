@@ -21,7 +21,7 @@ title: JavaScript: function scope is awesome
 
 <p>Lets say we have this module definition in code:</p>
 
-<pre>
+<pre><code class="javascript">
     {
         method1: function(params) {
             // some code
@@ -31,13 +31,13 @@ title: JavaScript: function scope is awesome
             // some code
         }
     }
-</pre>
+</code></pre>
 
 <p>Looks nice until the methods grow big with UI element definitions, event handlers, etc.. Then you have a mess.</p>
 
 <p>So I changed it to this:</p>
 
-<pre>
+<pre><code class="javascript">
     (function() {
 
         // I chose "exports" for similarity to CommonJS:
@@ -63,7 +63,7 @@ title: JavaScript: function scope is awesome
         
         return exports;
     })(); // This calls the function we just created and returns its result (exports object).
-</pre>
+</code></pre>
 
 <p>Seems longer but it is better structured, reduces deep nesting and lets you hide some vars and functions inside the module.</p>
 
@@ -74,7 +74,7 @@ title: JavaScript: function scope is awesome
 
 <p>However I found this abused in our code. So I remembered the good old trick and used it instead:</p>
 
-<pre>
+<pre><code class="javascript">
     someMethod = function() {
 
         var that = this;
@@ -93,14 +93,14 @@ title: JavaScript: function scope is awesome
 
         ...
     }
-</pre>
+</code></pre>
 
 
 <h3>Fix 3: put your functions wherever you want</h3>
 
 <p>I needed to write code for a widget. The code involved Module definition (Ext.data.JsonStore), View definition (Ext.XTemplate) and widget definition:</p>
 
-<pre>
+<pre><code class="javascript">
     var createMyWidget = function() {
 
         // Model (not shown)
@@ -116,11 +116,11 @@ title: JavaScript: function scope is awesome
             }
         });
     }
-</pre>
+</code></pre>
 
 <p>The "click" and other event handlers didn't look nice enough, so I decided to move them into separate functions. And I did. To preserve code reading flow I moved them below the return statement:</p>
 
-<pre>
+<pre><code class="javascript">
     var createMyWidget = function() {
         
         // Model (not shown)
@@ -139,7 +139,7 @@ title: JavaScript: function scope is awesome
             // lots of event handling here
         }
     }
-</pre>
+</code></pre>
 
 
 <p>Seems like a trivial thing, but very nice. Now I feel more confident about managing complexity in my work.</p>
