@@ -1,6 +1,7 @@
 
 body {
     background-color: #333;
+    background-image: url(background.png);
     font-family: Arial, sans-serif;
     font-size: 15px;
     margin: 0;
