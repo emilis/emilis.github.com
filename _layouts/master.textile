@@ -17,7 +17,10 @@
             </ul>
         </div>        
         <div id="body">
-            <div id="content">{{ content }}</div>
+            <div id="content">
+                <h1>{{ page.title}}</h1>
+                {{ content }}
+            </div>
             <div id="side">
                 <h3>Current projects:</h3>
                 <p><a href="http://kaveikiavaldzia.lt/">KąVeikiaValdžia.lt</a> / <a href="http://github.com/emilis/policyfeed">PolicyFeed</a> &ndash; a government news aggregator and filter.</p>
