@@ -1,6 +1,6 @@
 
 body {
-    background-color: #666;
+    background-color: #333;
     font-family: Arial, sans-serif;
     font-size: 15px;
     margin: 0;
@@ -21,7 +21,6 @@ code {
 /* layout */
 
 #header {
-    background-color: #173000;
     padding: 20px 40px 0;
 }
 
