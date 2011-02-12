@@ -2,16 +2,22 @@
 body {
     background-color: #666;
     font-family: Arial, sans-serif;
+    font-size: 10px;
     margin: 0;
     padding: 0 0 20px;
 }
 
 #header {
     background-color: #173000;
-    color: white;
-    font-size: 16pt;
     padding: 20px 40px 0;
 }
+
+    #logo {
+        display: block;
+        font-size: 16pt;
+        color: white;
+        text-decoration: none;
+    }
 
     #menu {
         list-style: none;
