@@ -4,7 +4,7 @@ body {
     font-family: Arial, sans-serif;
     font-size: 15px;
     margin: 0;
-    padding: 0 0 20px;
+    padding: 0 0 40px;
 }
 
 /* tag styles */
@@ -14,14 +14,14 @@ a:visited { color: #00202a; }
 a:hover { text-decoration: none; }
 
 code {
-    font-size: 15px;
+    font-size: 13px;
 }
 
 
 /* layout */
 
 #header {
-    padding: 20px 40px 0;
+    padding: 20px 70px 0;
 }
 
     #logo {
@@ -56,12 +56,12 @@ code {
     background-color: #feffd0;
     border: 1px solid #c4a000;
     padding: 0 10px 10px;
-    margin: 0 10px;
-    width: 900px;
+    margin: 0 40px;
+    width: 850px;
 }
 
     #content {
-        width: 600px;
+        width: 550px;
         float: left;
         clear: both;
         padding: 20px;
@@ -91,7 +91,7 @@ code {
         }
 
     #side {
-        margin-left: 640px;
+        margin-left: 590px;
         padding: 20px;
         color: #666;
     }

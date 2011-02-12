@@ -25,7 +25,7 @@ title: JavaScript function scope is awesome
     method1: function(params) {
         // some code
     },
-
+    
     method2: function(params) {
         // some code
     }
@@ -36,69 +36,73 @@ title: JavaScript function scope is awesome
 <p>So I changed it to this:</p>
 
 <pre><code class="javascript">(function() {
-
+    
     // I chose "exports" for similarity to CommonJS:
     var exports = {};
-
+    
     exports.method1 = function(params) {
         // some code
     };
-
+    
     exports.method2 = function(params) {
         // some code
     };
-
+    
     // Bonus: private static functions.
-    // .
     function internalFunction() {
         // some code
     }
-
+    
     // Bonus: private static vars.
-    // Helped me clean up some of this._varName vars from our module code.
+    // Helped me clean up some of this._varName vars from
+    //  our module code.
     var internalVar;
     
     return exports;
-})(); // This calls the function we just created and returns its result (exports object).</code></pre>
+
+})();
+// This calls the function we just created
+// and returns its result (exports object).</code></pre>
 
 <p>Seems longer but it is better structured, reduces deep nesting and lets you hide some vars and functions inside the module.</p>
 
 
-<h3>Fix 2: that = this</h3>
+<h3>Fix 2: var that = this</h3>
 
 <p>Dojo includes a nice mechanism for injecting context into functions: dojo.hitch().</p>
 
 <p>However I found this abused in our code. So I remembered the good old trick and used it instead:</p>
 
 <pre><code class="javascript">someMethod = function() {
-
+    
     var that = this;
-
     ...
-
+    
     var someEventHandler = function() {
-
-        // We need to go deeper for you to appreciate this (I mean that):
+        
+        // We need to go deeper for you to appreciate this
+        //  (I mean that):
         var anotherEventHandler = function() {
-
+            
             that.callSomeOtherMethod();
-            // At this level it saved me 2 calls to dojo.hitch().
+            // At this level it saved me
+            //  2 calls to dojo.hitch().
         }
     }
-
     ...
+    
 }</code></pre>
 
 
-<h3>Fix 3: put your functions wherever you want</h3>
+<h3>Fix 3: you can use functions before you define them</h3>
 
 <p>I needed to write code for a widget. The code involved Module definition (Ext.data.JsonStore), View definition (Ext.XTemplate) and widget definition:</p>
 
 <pre><code class="javascript">var createMyWidget = function() {
-
+    
     // Model (not shown)
     // View (not shown)
-
+    
     // Widget mixed with event handlers:
     return Ext.Container({
         ...
@@ -116,7 +120,7 @@ title: JavaScript function scope is awesome
         
     // Model (not shown)
     // View (not shown)
-
+    
     // Widget:
     return Ext.Container({
         ...
@@ -124,7 +128,7 @@ title: JavaScript function scope is awesome
             click: onClick // defined below
         }
     });
-
+    
     // Event handlers:
     function onClick() {
         // lots of event handling here
