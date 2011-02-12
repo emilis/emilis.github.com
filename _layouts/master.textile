@@ -12,7 +12,7 @@
                 <li><a href="/blog">Blog</a></li>
                 <li><a href="http://github.com/emilis/">Code</a></li>
             </ul>
-        
+        </div>        
         <div id="body">
             <div id="content">
                 <h1>{{ page.title }}</h1>
