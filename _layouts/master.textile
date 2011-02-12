@@ -26,10 +26,14 @@
                 <p><a href="http://kaveikiavaldzia.lt/">KąVeikiaValdžia.lt</a> / <a href="http://github.com/emilis/policyfeed">PolicyFeed</a> &ndash; a government news aggregator and filter.</p>
                 <p><a href="http://github.com/emilis/autofocus">Autofocus</a> &ndash; task list manager based on autofocus technique.</p>
                 <p><a href="http://objectfs.org/">ObjectFS</a> &ndash; data access API for JavaScript and other scripting languages.</p>
+
             </div>
             <div id="footer">
                 <p>(cc) BY-SA 2011 Emilis Dambauskas, <a href="mailto:emilis.d@gmail.com">emilis.d@gmail.com</a>.</p>
-                <p><em>Powered by <a href="http://github.com/">GitHub</a> <a href="http://pages.github.com/">Pages</a></em></p>
+                <p><em>
+                    Powered by <a href="http://github.com/">GitHub</a> <a href="http://pages.github.com/">Pages</a>,
+                    <a href="http://www.flickr.com/photos/zooboing/4608282327/in/pool-31664906@N00/">Background image</a> by <a href="http://zooboingreview.blogspot.com/">Patrick Hoesly</a>
+                </em></p>
             </div>
         </div>
     </body>
