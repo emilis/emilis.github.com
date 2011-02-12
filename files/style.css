@@ -11,8 +11,8 @@ body {
 
 /* tag styles */
 
-a { color: #0a3050; }
-a:visited { color: #00202a; }
+a { color: #204A87; }
+a:visited { color: #0A3050; }
 a:hover { text-decoration: none; }
 
 pre {
