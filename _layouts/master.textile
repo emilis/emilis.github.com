@@ -3,6 +3,8 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
         <title>{{ page.title }}</title>
+        <link rel="stylesheet" type="text/css" href="http://drnicwilliams.com/external/CodeHighlighter/styles.css"></link>
+        <script src="http://drnicwilliams.com/external/CodeHighlighter/clean_tumblr_pre.js"></script>
         <link rel="stylesheet" type="text/css" href="/files/style.css">
     </head>
     <body>

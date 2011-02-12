@@ -7,6 +7,19 @@ body {
     padding: 0 0 20px;
 }
 
+/* tag styles */
+
+a { color: #0a3050; }
+a:visited { color: #00202a; }
+a:hover { text-decoration: none; }
+
+code {
+    font-size: 15px;
+}
+
+
+/* layout */
+
 #header {
     background-color: #173000;
     padding: 20px 40px 0;
@@ -23,13 +36,13 @@ body {
         list-style: none;
         display: block;
         height: 25px;
-        margin: 10px 0 0;
+        margin: 15px 0 0;
         padding: 0;
     }
 
         #menu > li {
             float: left;
-            margin: 0 5px;
+            margin-right: 10px;
             padding: 5px;
             background-color: white;
         }
@@ -49,6 +62,7 @@ body {
     #content {
         width: 600px;
         float: left;
+        clear: both;
         padding: 20px;
         background-color: white;
         border: 1px solid #f7f8f5;
