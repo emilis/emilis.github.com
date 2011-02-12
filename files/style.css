@@ -14,12 +14,14 @@ a:visited { color: #00202a; }
 a:hover { text-decoration: none; }
 
 pre {
+    line-height: 1.2;
     border-radius: 2px;
     -moz-border-radius: 2px;
 }
 
 
 code {
+    font-family: DejaVu Sans Mono, Consolas, Andale Mono, monospace;
     font-size: 13px;
 }
 
@@ -108,7 +110,6 @@ code {
         #content h4,
         #content h5 {
             color: #2a5703;
-            text-shadow: 1px 1px 1px #eee;
         }
 
     #side {
@@ -118,7 +119,6 @@ code {
     }
 
         #side > h3 {
-            text-shadow: 1px 1px 1px #eee;
         }
 
     #footer {
