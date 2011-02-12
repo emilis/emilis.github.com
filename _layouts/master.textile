@@ -3,11 +3,24 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
         <title>{{ page.title }}</title>
+        <link rel="stylesheet" type="text/css" href="/files/style.css">
     </head>
     <body>
-        <h1>{{ page.title }}</h1>
-        {{ content }}
-        <hr>
-        <p><em>Powered by GitHub.com</em></p>
+        <div id="header">Emilis Dambauskas @ GitHub</div>
+        <ul id="menu">
+            <li><a href="/">Home</a></li>
+            <li><a href="/blog">Blog</a></li>
+            <li><a href="http://github.com/emilis/">Code</a></li>
+        </ul>
+        <div id="body">
+            <div id="content">
+                <h1>{{ page.title }}</h1>
+                {{ content }}
+            </div>
+            <div id="side">...</div>
+            <div id="footer">
+                <p><em>Powered by GitHub.com</em></p>
+            </div>
+        </div>
     </body>
 </html>
