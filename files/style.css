@@ -68,6 +68,27 @@ code {
         border: 1px solid #f7f8f5;
     }
 
+        #content > h1 {
+            margin-top: 0;
+        }
+
+        #content > h1,
+        #content > h2,
+        #content > h3,
+        #content > h4,
+        #content > h5 {
+            color: #173000;
+        }
+
+            #content > h1 > a {
+                text-decoration: none;
+                color: #173000;
+            }
+
+            #content > h1 > a:hover {
+                text-decoration: underline;
+            }
+
     #side {
         margin-left: 640px;
         padding: 20px;
@@ -76,8 +97,8 @@ code {
 
     #footer {
         clear: both;
-        width: 600px;
-        padding: 20px 10px;
+        padding: 10px;
         color: #666;
+        text-align: center;
     }
 

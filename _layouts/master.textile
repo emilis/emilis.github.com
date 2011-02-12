@@ -2,7 +2,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-        <title>{{ page.title }}</title>
+        <title>Emilis@GitHub: {{ page.title }}</title>
         <link rel="stylesheet" type="text/css" href="http://drnicwilliams.com/external/CodeHighlighter/styles.css"></link>
         <script src="http://drnicwilliams.com/external/CodeHighlighter/clean_tumblr_pre.js"></script>
         <link rel="stylesheet" type="text/css" href="/files/style.css">
@@ -12,18 +12,21 @@
             <a id="logo" href="/">Emilis Dambauskas @ GitHub</a>
             <ul id="menu">
                 <li><a href="/">Home</a></li>
-                <li><a href="/blog">Blog</a></li>
+                <!--<li><a href="/blog">Blog</a></li>-->
                 <li><a href="http://github.com/emilis/">Code</a></li>
             </ul>
         </div>        
         <div id="body">
-            <div id="content">
-                <h1>{{ page.title }}</h1>
-                {{ content }}
+            <div id="content">{{ content }}</div>
+            <div id="side">
+                <h3>Current projects:</h3>
+                <p><a href="http://kaveikiavaldzia.lt/">KąVeikiaValdžia.lt</a> / <a href="http://github.com/emilis/policyfeed">PolicyFeed</a> &ndash; a government news aggregator and filter.</p>
+                <p><a href="http://github.com/emilis/autofocus">Autofocus</a> &ndash; task list manager based on autofocus technique.</p>
+                <p><a href="http://objectfs.org/">ObjectFS</a> &ndash; data access API for JavaScript and other scripting languages.</p>
             </div>
-            <div id="side">...</div>
             <div id="footer">
-                <p><em>Powered by GitHub.com</em></p>
+                <p>(cc) BY-SA 2011 Emilis Dambauskas, <a href="mailto:emilis.d@gmail.com">emilis.d@gmail.com</a>.</p>
+                <p><em>Powered by <a href="http://github.com/">GitHub</a> <a href="http://pages.github.com/">Pages</a></em></p>
             </div>
         </div>
     </body>
