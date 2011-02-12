@@ -76,12 +76,12 @@ code {
         #content h3,
         #content h4,
         #content h5 {
-            color: #173000;
+            color: #4E9A06;
         }
 
             #content h1 > a {
                 text-decoration: none;
-                color: #173000;
+                color: #4E9A06;
             }
 
             #content h1 > a:hover {
