@@ -6,12 +6,13 @@
         <link rel="stylesheet" type="text/css" href="/files/style.css">
     </head>
     <body>
-        <div id="header">Emilis Dambauskas @ GitHub</div>
-        <ul id="menu">
-            <li><a href="/">Home</a></li>
-            <li><a href="/blog">Blog</a></li>
-            <li><a href="http://github.com/emilis/">Code</a></li>
-        </ul>
+        <div id="header">Emilis Dambauskas @ GitHub
+            <ul id="menu">
+                <li><a href="/">Home</a></li>
+                <li><a href="/blog">Blog</a></li>
+                <li><a href="http://github.com/emilis/">Code</a></li>
+            </ul>
+        
         <div id="body">
             <div id="content">
                 <h1>{{ page.title }}</h1>

@@ -3,47 +3,61 @@ body {
     background-color: #666;
     font-family: Arial, sans-serif;
     margin: 0;
-    padding: 0 1em 1em;
+    padding: 0 0 20px;
 }
 
 #header {
     background-color: #173000;
     color: white;
     font-size: 16pt;
+    padding: 20px 40px 0;
 }
 
-#menu {
-    list-style: none;
-    display: block;
-    height: 20px;
-    background-color: #999;
-}
-
-    #menu > li {
-        float: left;
+    #menu {
+        list-style: none;
+        display: block;
+        height: 25px;
+        margin: 10px 0 0;
+        padding: 0;
     }
 
-        #menu > li > a {
-            color: white;
-            font-weight: bold;
+        #menu > li {
+            float: left;
+            margin: 0 5px;
+            padding: 5px;
+            background-color: white;
         }
+
+            #menu > li > a {
+                font-weight: bold;
+            }
 
 #body {
     background-color: #feffd0;
     border: 1px solid #c4a000;
-    padding: 0.25em;
+    padding: 0 10px 10px;
+    margin: 0 10px;
+    width: 900px;
 }
 
     #content {
         width: 600px;
         float: left;
-        padding: 0.5em;
+        padding: 20px;
         background-color: white;
         border: 1px solid #f7f8f5;
+    }
+
+    #side {
+        margin-left: 640px;
+        padding: 20px;
+        color: #666;
     }
 
     #footer {
         clear: both;
         width: 600px;
-        padding: 1em 0.5em;
+        padding: 20px 10px;
+        color: #666;
     }
+
