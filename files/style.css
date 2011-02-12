@@ -57,14 +57,14 @@ code {
     border: 1px solid #c4a000;
     padding: 0 10px 10px;
     margin: 0 40px;
-    width: 850px;
+    width: 890px;
 }
 
     #content {
-        width: 550px;
+        width: 540px;
         float: left;
         clear: both;
-        padding: 20px;
+        padding: 15px 50px 40px 40px;
         background-color: white;
         border: 1px solid #f7f8f5;
     }
@@ -91,7 +91,7 @@ code {
         }
 
     #side {
-        margin-left: 590px;
+        margin-left: 640px;
         padding: 20px;
         color: #666;
     }
