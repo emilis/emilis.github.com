@@ -17,7 +17,7 @@ title: JavaScript is an amazing language
 
 <p>That's what I did to refactor the code:</p>
 
-<h3>Fix 1: Self-executing anonymous functions instead of object literals</h3>
+<h3>Fix #1: Self-executing anonymous functions instead of object literals</h3>
 
 <p>Lets say we have this module definition in code:</p>
 
@@ -65,7 +65,7 @@ title: JavaScript is an amazing language
 <p>Seems longer but it is better structured, reduces deep nesting and lets you hide some vars and functions inside the module.</p>
 
 
-<h3>Fix 2: <em>var that = this</em> and closures</h3>
+<h3>Fix #2: <em>that = this</em> and closures</h3>
 
 <p>Dojo includes a nice mechanism for injecting scope into functions: <a href="http://dojotoolkit.org/reference-guide/dojo/hitch.html">dojo.hitch()</a>.</p>
 
@@ -91,7 +91,7 @@ title: JavaScript is an amazing language
 }</code></pre>
 
 
-<h3>Fix 3: you can use functions before you define them</h3>
+<h3>Fix #3: you can use functions before you define them</h3>
 
 <p>I needed to write code for a widget. The code involved Model definition (<a href="http://dev.sencha.com/deploy/dev/docs/?class=Ext.data.JsonStore">Ext.data.JsonStore</a>), View definition (<a href="http://dev.sencha.com/deploy/dev/docs/?class=Ext.XTemplate">Ext.XTemplate</a>) and widget definition:</p>
 
