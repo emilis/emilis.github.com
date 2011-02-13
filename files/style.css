@@ -61,7 +61,7 @@ code {
 
             #menu > li > a {
                 display: block;
-                padding: 5px 48px;
+                padding: 5px 21px;
                 font-weight: bold;
                 color: #666;
                 text-decoration: none;
@@ -123,6 +123,17 @@ code {
             margin: 5px -10px 5px 5px;
             padding: 5px;
         }
+
+        #content div.project {
+            clear: both;
+        }
+
+            #content div.project > img {
+                float: right;
+                padding: 5px;
+                border: 1px solid #ccc;
+                margin: 0 0 5px 5px;
+            }
 
     #side {
         margin-left: 640px;
