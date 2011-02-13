@@ -5,23 +5,21 @@ title: JavaScript is an amazing language
 
 <p>When I changed jobs recently I bet on working as a JavaScript developer.</p>
 
-<p>Part of my reasoning was that JavaScript is such a dynamic language that no matter what enterpricey or badly designed systems I will encounter, I will be able to program my way out of them and restore my sanity :-)</p>
+<p>Part of my reasoning was that JavaScript is such a dynamic language that no matter what enterpricey or badly designed systems I will encounter, I will be able to program my way out of the mess and restore my sanity :-)</p>
 
 <p>Today it seems to me that I must have been right.</p>
 
-<p>On my new project I have to use a mix of <a href="http://www.dojotoolkit.org/">Dojo</a>, <a href="http://www.sencha.com/products/extjs/">ExtJS</a> and <a href="http://help.arcgis.com/en/webapi/javascript/arcgis/">ArcGIS</a> libraries. Let me say that I am not very impressed by ExtJS. It is too bloated for my tastes.</p>
+<p>On my new project I have to use a mix of <a href="http://www.dojotoolkit.org/">Dojo</a>, <a href="http://www.sencha.com/products/extjs/">ExtJS</a> and <a href="http://help.arcgis.com/en/webapi/javascript/arcgis/">ArcGIS</a> libraries.</p>
 
-<p>I also think that Dojo and ExtJS documentation are partially to blame for the fact that I found my colleagues code littered with object literals nesting 16+ levels deep. Because that's what you get if you start from a code examples in documentation [<small><a href="http://dojotoolkit.org/reference-guide/dojo/declare.html">dojo.declare</a>, <a href="http://dev.sencha.com/deploy/dev/docs/?class=Ext.Container">Ext.Container</a></small>].</p>
+<p>I am not very impressed by ExtJS. It is too bloated for my tastes. I also think that Dojo and ExtJS documentation are partially to blame for the fact that I found my colleagues' code littered with object literals nesting 16+ levels deep. Because that's what you get if you start from code examples in documentation (e.g. <small><a href="http://dojotoolkit.org/reference-guide/dojo/declare.html">dojo.declare</a>, <a href="http://dev.sencha.com/deploy/dev/docs/?class=Ext.Container">Ext.Container</a></small>).</p>
 
-<p>But with JavaScript it's fixable. And function-level scoping is a very powerful tool.</p>
-
-<p>That's what I did to refactor the code:</p>
+<p>But with JavaScript it is fixable. That's what I did to refactor the code:</p>
 
 <h3>Fix #1: Self-executing anonymous functions instead of object literals</h3>
 
 <p>Lets say we have this module definition in code:</p>
 
-<pre><code class="javascript">{
+<pre><code class="javascript">dojo.declare("MyModule", [], {
     method1: function(params) {
         // some code
     },
@@ -29,40 +27,40 @@ title: JavaScript is an amazing language
     method2: function(params) {
         // some code
     }
-}</code></pre>
+});</code></pre>
 
-<p>Looks nice until the methods grow big with UI element definitions, event handlers, etc.. Then you have a mess.</p>
+<p>Looks nice until the methods grow in depth with UI element definitions, event handlers, etc.. Then you have a mess.</p>
 
 <p>So I changed it to this:</p>
 
-<pre><code class="javascript">(function() {
+<pre><code class="javascript">dojo.declare("MyModule", [], (function() {
     
-    // I chose "exports" for similarity to CommonJS:
-    var exports = {};
+// I chose "exports" for similarity to CommonJS:
+var exports = {};
     
-    exports.method1 = function(params) {
-        // some code
-    };
+exports.method1 = function(params) {
+    // some code
+};
     
-    exports.method2 = function(params) {
-        // some code
-    };
+exports.method2 = function(params) {
+    // some code
+};
     
-    // Bonus: private static vars.
-    var internalVar;
+// Bonus: private static vars.
+var internalVar;
     
-    // Bonus: private static functions.
-    function internalFunction() {
-        // some code
-    }
+// Bonus: private static functions.
+function internalFunction() {
+    // some code
+}
     
-    return exports;
+return exports;
+    
+})() // This calls the function we just created
+     // and returns its result (exports object).
+); // closing dojo.declare()</code></pre>
 
-})();
-// This calls the function we just created
-// and returns its result (exports object).</code></pre>
-
-<p>Seems longer but it is better structured, reduces deep nesting and lets you hide some vars and functions inside the module.</p>
+<p>Seems longer but it is better structured, reduces deep nesting and lets you hide some variables and functions inside the module.</p>
 
 
 <h3>Fix #2: <em>that = this</em> and closures</h3>
@@ -91,7 +89,7 @@ title: JavaScript is an amazing language
 }</code></pre>
 
 
-<h3>Fix #3: you can use functions before you define them</h3>
+<h3>Fix #3: you can use functions before you define them (duh)</h3>
 
 <p>I needed to write code for a widget. The code involved Model definition (<a href="http://dev.sencha.com/deploy/dev/docs/?class=Ext.data.JsonStore">Ext.data.JsonStore</a>), View definition (<a href="http://dev.sencha.com/deploy/dev/docs/?class=Ext.XTemplate">Ext.XTemplate</a>) and widget definition:</p>
 
@@ -111,7 +109,7 @@ title: JavaScript is an amazing language
     });
 }</code></pre>
 
-<p>The "click" and other event handlers didn't look nice enough, so I decided to move them into separate functions. And I did. To preserve code reading flow I moved them below the return statement:</p>
+<p>The "click" and other event handlers looked too heavy compared to other code, so I decided to move them into separate functions. And I did. To preserve code reading flow I moved them below the return statement:</p>
 
 <pre><code class="javascript">exports.createMyWidget = function() {
         
@@ -137,4 +135,4 @@ title: JavaScript is an amazing language
 
 <p>&nbsp;</p>
 
-<p>The only thing that can still slow me down? The same zombie that haunts every web developer: <a href="http://robertnyman.com/javascript/">Internet Explorer</a>.</p>
+<p>The only thing that can still slow me down now? The same zombie that haunts every web developer: <a href="http://robertnyman.com/javascript/">Internet Explorer</a>.</p>
