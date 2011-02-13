@@ -134,10 +134,9 @@ code {
         }
 
         #side img {
-            border: 1px solid #666;
+            border: 1px solid #ccc;
             padding: 5px;
             background-color: white;
-            margin: 0 5px 5px;
         }
 
     #footer {
