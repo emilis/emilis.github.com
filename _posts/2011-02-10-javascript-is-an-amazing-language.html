@@ -1,6 +1,6 @@
 ---
-layout: master 
-title: JavaScript function scope is awesome
+layout: post
+title: JavaScript is an amazing language
 ---
 
 <p>When I changed jobs recently I bet on working as a JavaScript developer.</p>
@@ -9,15 +9,15 @@ title: JavaScript function scope is awesome
 
 <p>Today it seems to me that I must have been right.</p>
 
-<p>On my new project I have to use a mix of Dojo, Sencha/ExtJS and ArcGIS libraries. Let me say that I am not very impressed by ExtJS. It is too bloated for my tastes.</p>
+<p>On my new project I have to use a mix of <a href="http://www.dojotoolkit.org/">Dojo</a>, <a href="http://www.sencha.com/products/extjs/">ExtJS</a> and <a href="http://help.arcgis.com/en/webapi/javascript/arcgis/">ArcGIS</a> libraries. Let me say that I am not very impressed by ExtJS. It is too bloated for my tastes.</p>
 
-<p>Also I blame on Dojo and ExtJS documentation the fact that I found my colleagues code littered with object literals nesting 16+ levels deep. Because that's what you get if you start from a code example in documentation.</p>
+<p>I also think that Dojo and ExtJS documentation are partially to blame for the fact that I found my colleagues code littered with object literals nesting 16+ levels deep. Because that's what you get if you start from a code examples in documentation [<a href="http://dojotoolkit.org/reference-guide/dojo/declare.html">dojo.declare</a>, <a href="http://dev.sencha.com/deploy/dev/docs/?class=Ext.Container">Ext.Container</a>].</p>
 
-<p>But with JavaScript it's fixable. And function scope is a very powerful tool.</p>
+<p>But with JavaScript it's fixable. And function-level scoping is a very powerful tool.</p>
 
 <p>That's what I did to refactor the code:</p>
 
-<h3>Fix 1: adhoc function calls instead of object literals for module code</h3>
+<h3>Fix 1: Self-executing anonymous functions instead of object literals</h3>
 
 <p>Lets say we have this module definition in code:</p>
 
@@ -48,15 +48,13 @@ title: JavaScript function scope is awesome
         // some code
     };
     
+    // Bonus: private static vars.
+    var internalVar;
+    
     // Bonus: private static functions.
     function internalFunction() {
         // some code
     }
-    
-    // Bonus: private static vars.
-    // Helped me clean up some of this._varName vars from
-    //  our module code.
-    var internalVar;
     
     return exports;
 
@@ -67,21 +65,20 @@ title: JavaScript function scope is awesome
 <p>Seems longer but it is better structured, reduces deep nesting and lets you hide some vars and functions inside the module.</p>
 
 
-<h3>Fix 2: var that = this</h3>
+<h3>Fix 2: <code>var that = this</code> and closures</h3>
 
-<p>Dojo includes a nice mechanism for injecting context into functions: dojo.hitch().</p>
+<p>Dojo includes a nice mechanism for injecting scope into functions: <a href="http://dojotoolkit.org/reference-guide/dojo/hitch.html">dojo.hitch()</a>.</p>
 
 <p>However I found this abused in our code. So I remembered the good old trick and used it instead:</p>
 
-<pre><code class="javascript">someMethod = function() {
+<pre><code class="javascript">exports.someMethod = function() {
     
     var that = this;
     ...
     
     var someEventHandler = function() {
         
-        // We need to go deeper for you to appreciate this
-        //  (I mean that):
+        // We need to go deeper:
         var anotherEventHandler = function() {
             
             that.callSomeOtherMethod();
@@ -96,9 +93,9 @@ title: JavaScript function scope is awesome
 
 <h3>Fix 3: you can use functions before you define them</h3>
 
-<p>I needed to write code for a widget. The code involved Module definition (Ext.data.JsonStore), View definition (Ext.XTemplate) and widget definition:</p>
+<p>I needed to write code for a widget. The code involved Model definition (<a href="http://dev.sencha.com/deploy/dev/docs/?class=Ext.data.JsonStore">Ext.data.JsonStore</a>), View definition (<a href="http://dev.sencha.com/deploy/dev/docs/?class=Ext.XTemplate">Ext.XTemplate</a>) and widget definition:</p>
 
-<pre><code class="javascript">var createMyWidget = function() {
+<pre><code class="javascript">exports.createMyWidget = function() {
     
     // Model (not shown)
     // View (not shown)
@@ -116,7 +113,7 @@ title: JavaScript function scope is awesome
 
 <p>The "click" and other event handlers didn't look nice enough, so I decided to move them into separate functions. And I did. To preserve code reading flow I moved them below the return statement:</p>
 
-<pre><code class="javascript">var createMyWidget = function() {
+<pre><code class="javascript">exports.createMyWidget = function() {
         
     // Model (not shown)
     // View (not shown)
@@ -138,4 +135,6 @@ title: JavaScript function scope is awesome
 
 <p>Seems like a trivial thing, but very nice. Now I feel more confident about managing complexity in my work.</p>
 
-<p>The only thing that can still slow me down? The same zombie that haunts every web developer: Internet Explorer.</p>
+<p>&nbsp;</p>
+
+<p>The only thing that can still slow me down? The same zombie that haunts every web developer: <a href="http://robertnyman.com/javascript/">Internet Explorer</a>.</p>
