@@ -31,7 +31,7 @@ code {
 /* layout */
 
 #header {
-    padding: 20px 70px 0;
+    padding: 20px 90px 0;
 }
 
     #logo {
@@ -112,6 +112,16 @@ code {
         #content h4,
         #content h5 {
             color: #2a5703;
+        }
+
+        #content span.date {
+            background-color: #CCCCCC;
+            color: #666666;
+            display: block;
+            float: right;
+            font-weight: bold;
+            margin: 2px -10px 5px 5px;
+            padding: 5px;
         }
 
     #side {
