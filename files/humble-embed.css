@@ -1,0 +1,91 @@
+.humble {
+    /*background-color: #eee;*/
+    border: 1px dotted #ccc;
+    font-family: Consolas, Andale Mono, monospace;
+    font-size: 13px;
+}
+
+div.humble,
+pre.humble {
+    padding: 10px;
+}
+
+tt.humble {
+    padding: 2px 5px;
+}
+
+.humble li > i,
+.humble td i,
+.humble li > em,
+.humble td em {
+    color: #999;
+}
+
+.humble table {
+    border-collapse: collapse;
+}
+
+
+.humble td {
+    padding: 0px;
+    font-family: monospace;
+    background-color: white;
+    border: 1px solid #ccc;
+}
+
+.humble td:first-child {
+    padding: 10px;
+    font-weight: bold;
+    background-color: #eee;
+}
+
+.humble li td:first-child {
+    padding: 5px;
+}
+
+.humble td:nth-child(2) {
+    padding: 0;
+}
+
+
+.humble > table > tbody > tr:hover > td {
+    background-color: #fffff8;
+}
+.humble > table > tbody > tr:hover > td:first-child {
+    background-color: #ffe;
+}
+
+.humble ul,
+.humble ol {
+    margin: 0px;
+    padding: 0px 10px 0px 31px;
+}
+
+.humble td > ul:first-child {
+    padding-top: 5px;
+}
+
+.humble td > ul:last-child {
+    padding-bottom: 5px;
+}
+
+.humble li {
+    margin: 5px 0 5px 0px;
+}
+
+.humble ul > li {
+    list-style: disc;
+}
+
+.humble ol > li {
+    list-style-type: hyphen;
+}
+
+.humble td p {
+    margin: 10px;
+}
+
+.humble li td p {
+    margin: 5px;
+}
+

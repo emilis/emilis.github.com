@@ -1,0 +1,96 @@
+body {
+    font-family: Arial, sans-serif;
+    font-size: 13px;
+    padding: 20px;
+}
+
+h1,h2,h3,h4,h5,h6 {
+    color: #457f05;
+}
+
+pre {
+    background-color: #eee;
+    border: 1px dotted #ccc;
+    padding: 10px;
+}
+
+tt {
+    background-color: #eee;
+    border: 1px dotted #ccc;
+    padding: 2px 5px;
+}
+
+li > i,
+td i,
+li > em,
+td em {
+    color: #999;
+}
+
+table {
+    border-collapse: collapse;
+}
+
+
+td {
+    padding: 0px;
+    font-family: monospace;
+    background-color: white;
+    border: 1px solid #ccc;
+}
+
+td:first-child {
+    padding: 10px;
+    font-weight: bold;
+    background-color: #eee;
+}
+
+li td:first-child {
+    padding: 5px;
+}
+
+td:nth-child(2) {
+    padding: 0;
+}
+
+
+body > table > tbody > tr:hover > td {
+    background-color: #fffff8;
+}
+body > table > tbody > tr:hover > td:first-child {
+    background-color: #ffe;
+}
+
+ul, ol {
+    margin: 0px;
+    padding: 0px 10px 0px 31px;
+}
+
+td > ul:first-child {
+    padding-top: 5px;
+}
+
+td > ul:last-child {
+    padding-bottom: 5px;
+}
+
+li {
+    margin: 5px 0 5px 0px;
+}
+
+ul > li {
+    list-style: disc;
+}
+
+ol > li {
+    list-style-type: hyphen;
+}
+
+td p {
+    margin: 10px;
+}
+
+li td p {
+    margin: 5px;
+}
+
