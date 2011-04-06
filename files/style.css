@@ -27,6 +27,27 @@ code {
     font-size: 13px;
 }
 
+table {
+    border-collapse: collapse;
+}
+
+    th, td {
+        border: 1px solid #ccc;
+        padding: 10px;
+    }
+
+/* class styles */
+
+div.project {
+    border: 1px dotted #ccc;
+    padding: 0px 15px;
+    margin: 20px 0;
+    border-radius: 5px;
+}
+
+    div.project > h4 {
+        margin-top: 15px;
+    }
 
 /* layout */
 
