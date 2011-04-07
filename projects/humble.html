@@ -2,12 +2,26 @@
 layout: master
 title: Humble programming language
 ---
+<link rel="stylesheet" type="text/css" href="/files/humble-embed.css">
 <p><a href="/projects.html">Projects</a> &raquo;</p>
 <h1>Humble programming language</h1>
 
-<p><em>This is a hobby project. I gather my ideas of what an ideal programming language (for me) would work like. If you want to talk to me about it, <a href="mailto:emilis.d@gmail.com">send an email</a>.</em></p>
+<p><em>This is a hobby project. I gather my ideas of what an ideal programming language (for me) would work like. The definition is nowhere near complete or consistent. If you have comments or suggestions <a href="mailto:emilis.d@gmail.com">send me an email</a>.</em></p>
 
-<h2>Basic concepts</h2>
+<ul>
+    <li><a href="#basic-concepts">Basic Concepts</a></li>
+    <li><a href="#syntax">Syntax</a><ul>
+        <li><a href="#code-structure">Code Structure</a><ul>
+            <li><a href="#nesting-rule">The rule of continuing lists vertically</a></li>
+        </ul></li>
+        <li><a href="#variables">Variables and Values</a></li>
+    </ul></li>
+    <li><a href="#namespaces">Namespaces</a></li>
+    <li><a href="#commands">Commands</a></li>
+    <li><a href="#future">Further questions</a></li>
+</ul>
+
+<h2 id="basic-concepts">Basic Concepts</h2>
 
 <ul>
     <li>Humble code can be embedded and edited on a web page through a browser.</li>
@@ -28,50 +42,306 @@ title: Humble programming language
     </li>
 </ul>
 
-<h2>Syntax</h2>
+<h2 id="syntax">Syntax</h2>
+
+<h3 id="code-structure">Code Structure</h3>
 
 <table><thead>
 <tr>
-    <th valign="top"></th>
+    <th></th>
     <th>plain-text</th>
     <th>HTML</th>
 </tr>
 </thead><tbody>
 <tr>
-    <td valign="top"><b>action</b><br>(command call)</td>
-    <td>(command arg1 arg2 ...)</td>
-    <td><ul><li>command arg1 arg2</li></ul></td>
+    <td><b>action</b><br><small>(command call)</small></td>
+    <td class="humble" nowrap="nowrap">(command arg1 arg2 ...)</td>
+    <td class="humble" nowrap="nowrap"><ul><li>command arg1 arg2</li></ul></td>
 </tr>
 <tr>
-    <td valign="top"><b>list</b>(array)</td>
-    <td>[item1, item2, ...]</td>
-    <td><ol>
+    <td><b>list</b><br><small>(array)</small></td>
+    <td class="humble">[item1, item2, ...]</td>
+    <td class="humble"><ol>
         <li>item1</li>
         <li>item2</li>
         <li>item3</li>
     </ol></td>
 </tr>
 <tr>
-    <td valign="top"><b>dictionary</b></td>
-    <td valign="top">{key1: val1, key2: val2, ...}</td>
-    <td valign="top">
+    <td><b>dictionary</b></td>
+    <td class="humble">{key1: val1, key2: val2, ...}</td>
+    <td class="humble">
         <table><tbody>
         <tr>
-            <td><b>key1</b></td>
-            <td>value1</td>
+            <td>key1</td>
+            <td><p>value1</p></td>
         </tr>
         </tbody>
         <tr>
-            <td><b>key2</b></td>
-            <td>value2</td>
+            <td>key2</td>
+            <td><p>value2</p></td>
         </tr>
         <tr>
-        <td valign="top"><b>key3<br></b></td>
-        <td valign="top">value3</td>
+            <td>key3</td>
+            <td><p>value3</p></td>
         </tr>
-        </tbody>
-        </table>
+        </tbody></table>
     </td>
 </tr>
+<tr>
+    <td><b>comments</b><br><small>(top level)</small></td>
+    <td class="humble" colspan="2">
+        <p>Humble supports literate programming.</p>
+        <p>All text that is at the top-most level of a file/page and is not an <em>action</em>, <em>list</em> or <em>dictionary</em> is treated as comment.</p>
+    </td>
+</tr>
+<tr>
+    <td rowspan="2"><b>comments</b><br><small>(inside code)</small></td>
+    <td class="humble">/* multiline<br>comment text */</td>
+    <td class="humble"><p><em>Italic text denotes comments</em></p></td>
+</tr>
+<tr>
+    <td class="humble">// single-line comment</td>
+    <td class="humble"><p><em>// You should still start comment with "//" after executable code on the same line.</em></p></td>
+</tr>
 </tbody></table>
+
+<h4 id="nesting-rule">The rule of continuing lists vertically:</h4>
+
+<ul>
+    <li>You can continue listing <em>action</em> arguments as a nested list. You can continue listing <em>list</em> items as a nested list.</li>
+    <li>Semicolon at the end of parent line is gnored.</li>
+</ul>
+
+<table><tbody>
+    <tr>
+        <th>Code</th>
+        <th>Equivalent</th>
+    </tr>
+    <tr>
+        <td class="humble">(print Hello World!)</td>
+        <td class="humble">
+            <ul>
+                <li>print:<ol>
+                    <li>Hello</li>
+                    <li>World!</li>
+                </ol></li>
+            </ul>
+        </td>
+    </tr>
+    <tr>
+        <td class="humble">(print (get-temperature) (get-wind-speed))</td>
+        <td class="humble">
+            <ul>
+                <li>print:<ul>
+                    <li>get-temperature</li>
+                    <li>get-wind-speed</li>
+                </ul></li>
+            </ul>
+        </td>
+    </tr>
+    <tr>
+        <td class="humble">(set arr [a,b,c])</td>
+        <td class="humble" nowrap="nowrap">
+            <ul>
+                <li>set arr [ <em>// note the "["</em><ol>
+                    <li>a</li>
+                    <li>b</li>
+                    <li>c</li>
+                </ol></li>
+            </ul>
+        </td>
+    </tr>
+</tbody></table>
+
+<h3 id="variables">Variables and Values</h3>
+
+<p>Unquoted strings separated by spacing are treated as string or number values. To get a value of a variable you can use <tt class="humble">$var</tt> which is a shorthand for <tt class="humble">(value var)</tt> or even <tt class="humble">($ var)</tt>.</p>
+
+<table><tbody>
+    <tr>
+        <th>Code</th>
+        <th>Description</th>
+    </tr>
+    <tr>
+        <td class="humble" nowrap="nowrap">
+            <ul>
+                <li>print Hello "World"</li>
+            </ul>
+        </td>
+        <td><p>Executes command <em>print</em> with two string arguments <em>"Hello"</em> and <em>"World"</em>.</p></td>
+    </tr>
+    <tr>
+        <td class="humble">
+            <ul>
+                <li>set x 42</li>
+                <li>print x= $x</li>
+            </ul>
+        </td>
+        <td>
+            <p>Sets the value of the variable <em>x</em>.</p>
+            <p>Should print out <em>"x= 42"</em>.</p></td>
+    </tr>
+    <tr>
+        <td class="humble" nowrap="nowrap">
+            <ul>
+                <li>set rect { h: 10, w: 20 }</li>
+                <li>set rect.h 15</li>
+                <li>set rect[w] 25</li>
+                <li>print $rect[h] x $rect.w</li>
+            </ul>
+        </td>
+        <td>
+            <p>Creates an object <em>rect</em> with two properties (<em>h</em> and <em>w</em>).</p>
+            <p>Modifies the properties.</p>
+            <p>Prints out <em>"15 x 25"</em>, using the values of the properties.</p>
+        </td>
+    </tr>
+</tbody></table>
+
+<h2 id="namespaces">Namespaces</h2>
+
+<ul>
+<li><em>Namespaces</em> organize variables into groups.<ul>
+    <li>Variable names inside a namespace are unique.</li>
+    <li>Variables from a separate namespace can be accessed by adding the name of the namespace before the name of the variable.</li>
+</ul></li>
+<li>Namespaces are hierarchical: a name in one namespace may point to another namespace.</li>
+<li>There is one <em>global</em> top-level namespace reserved for <em>modules</em>. A name in this namespace points to a module namespace.<ul>
+    <li>Modules are defined in files (or web pages). One file per module and one module per file (or webpage).</li>
+</ul></li>
+<li>A namespace for a variable name in source code should be clearly visible.</li>
+</ul>
+
+<p>Dictionary notation is used to express namespaces:</p>
+
+<ul>
+<li>A <em>dictionary</em> defines a set of variables in the <em>current namespace</em> unless it is used as an <em>argument</em> or it is a <em>command definition</em> <small>(see below)</small>.</li>
+</ul>
+
+<p><b>Example</b></p>
+
+<table><tbody>
+    <tr>
+        <th>Code</th>
+        <th>Equivalent</th>
+    </tr>
+    <tr>
+        <td class="humble">
+            <table><tbody>
+                <tr>
+                    <td>x</td>
+                    <td><p>42</p></td>
+                </tr>
+                <tr>
+                    <td>arr</td>
+                    <td><ol><li>a</li><li>b</li><li>c</li></ol></td>
+                </tr>
+                <tr>
+                    <td>rect</td>
+                    <td><table><tbody>
+                                <tr><td>h</td><td><p>10</p></td></tr>
+                                <tr><td>w</td><td><p>20</p></td></tr>
+                                <tr><td>area</td><td><p>(* $h $w)</p></td></tr>
+                    </tbody></table></td>
+                </tr>
+            </tbody></table>
+        </td>
+        <td class="humble">
+            <ul>
+                <li>set x 42</li>
+                <li>set arr [a,b,c]</li>
+            </ul>
+            <table><tbody>
+                    <tr>
+                        <td>rect</td>
+                        <td>
+                            <ul>
+                                <li>set h 10</li>
+                                <li>set w 20</li>
+                                <li>set area<ul><li>multiply $h $w</li></ul></li>
+                            </ul>
+                        </td>
+                    </tr>
+            </tbody></table>
+        </td>
+    </tr>
+</tbody></table>
+
+
+<h2 id="commands">Commands</h2>
+
+<p><em>I am still working on this part. This will probably change in the future.</em></p>
+
+<p><em>Functions are called "commands" in Humble. This is due to a number of reasons which I will someday explain elsewhere.</em></p>
+
+<ul>
+    <li>A command consists of a number of <em>command clauses</em>.<br><small>(This is similar to <a href="http://www.erlang.org/doc/reference_manual/functions.html">Erlang functions</a>.)</small></li>
+    <li>A command clause consists of an argument list and a value or an action list.</li>
+    <li>The result of the last action in the command clause is returned when executing the command clause.</li>
+</ul>
+
+<table><tbody>
+    <tr>
+        <th>Code</th>
+        <th>Description</th>
+    </tr>
+    <tr>
+        <td class="humble">
+            <table><tbody>
+                <tr>
+                    <td>[x]</td>
+                    <td><ul><li>add $x 1</li></ul></td>
+                </tr>
+            </tbody></table>
+        </td>
+        <td><p>This creates an anonymous command that returns a value increased by 1</p></td>
+    </tr>
+    <tr>
+        <td class="humble">
+            <table><tbody>
+                <tr>
+                    <td>factorial</td>
+                    <td><table><tbody>
+                        <tr>
+                            <td>[0]</td>
+                            <td><p>1</p></td>
+                        </tr>
+                        <tr>
+                            <td>[x]</td>
+                            <td nowrap="nowrap">
+                                <ul>
+                                    <li>multiply:<ul>
+                                        <li>$ x</li>
+                                        <li>factorial: <ul><li>- $x 1</li></ul></li>
+                                    </ul></li>
+                                </ul>
+                            </td>
+                        </tr>
+                    </tbody></table></td>
+                </tr>
+            </tbody></table>
+        </td>
+        <td>
+            <p>This creates a recursive command <em>factorial</em>.</p>
+            <p><tt class="humble">(factorial 0)</tt> always returns <em>1</em>.</p>
+            <p>Other calls to factorial multiply its <em>argument</em> with <em>argument - 1</em>.</p>
+        </td>
+    </tr>
+</tbody></table>
+
+<h2 id="future">Further questions</h2>
+
+<p>I am still experimenting with different notations for:</p>
+
+<ul>
+    <li>Defining commands in plain-text.</li>
+    <li>Using patterns and guards (like Erlang) in command clauses.</li>
+    <li>Variables, their values and references to variables.</li>
+</ul>
+
+<p>One idea I want to try out is to express plain-text Humble code as <a href="http://www.yaml.org/">YAML</a>. I'm guessing that adding <em>action</em> notation to it would be nough.</p>
+
+
+
 
