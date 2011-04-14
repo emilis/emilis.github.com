@@ -1,0 +1,164 @@
+---
+layout: post
+title: Usefulness of inventing programming languages
+---
+<style type="text/css">
+code.javascript {
+    border: 1px dotted #ccc;
+    padding: 0 2px;
+    background-color: #fafafa;
+    }
+</style>
+<p>I have a hobby project: Humble programming language.</p>
+<p>It started as a joke: a Lisp with bullet-lists instead of parenthesis. Later I added every feature I found useful or interesting from other programming languages.</p>
+<p>I use it as some form  of <a href="http://en.wikipedia.org/wiki/Pseudocode">pseudocode</a> to write code for complex problems I stumble upon. I wrote a translator (to PHP) for it a couple of years ago (thought of using it as an embedded language in a CMS). Nowadays I mostly play with its syntax and don't worry about the implementation.</p>
+
+<p>Humble code looks like this:</p>
+<pre class="humble"><i>// Both *actions* do the same:</i><ul><li>print Hello World</li><li>print:</li><ol><li>Hello</li><li>World</li></ol></ul></pre>
+
+<p>Recently I expanded it to include tables for expressing dictionaries, functions and variable declarations.<small><a id="ref1" href="#note1"><sup>*</sup></a></small></p>
+
+<p>This is an example of how one would define a recursive implementation of a factorial in Humble:</p>
+
+<pre class="humble"><table>
+  <tbody>
+    <tr>
+      <td>factorial</td>
+      <td><table><tbody><tr><td>[0]</td><td><p>1</p></td></tr><tr><td>[x]</td><td><ul><li>multiply:</li><ul><li>$ x</li><li>factorial (- $x 1)</li></ul></ul></td></tr></tbody></table></td></tr></tbody></table>
+      <p><i>// Note the usage of <a href="http://www.erlang.org/doc/reference_manual/functions.html">function clauses like in Erlang</a>.</i></p>
+</pre>
+
+<h3>On why the tables work so well</h3>
+
+<p>I use the same two-column tables to express dictionaries, functions and namespaces (or variable scope), because I think that these things are nearly equivalent in how they work and only differ in what we use them for.</p>
+
+<p>Here  is a <a href="http://mathworld.wolfram.com/Function.html">definition of a function from Wolfram MathWorld</a> and my college  maths book:</p>
+
+<blockquote><p><i>A function is a relation that uniquely associates members 
+of one set with members of another set.</i></p></blockquote>
+
+<p> It looks to me that dictionaries or mapping variable names to their values fit into this definition.</p>
+
+<p>This raises some interesting questions. E.g. why this does not work: <code class="javascript">[1,2,3].map({2:4})</code> (in JavaScript)?</p>
+
+<p>Questions like these came to me like some revelation (or <a href="http://en.wikipedia.org/wiki/Id%C3%A9e_fixe_%28psychology%29">idée fixe</a>) a few weeks ago. I wondered if there is a set of operations that should work on different data types (numbers, strings, lists, dictionaries) even if you don't see them often in programming languages or they are expressed in other ways. E.g.:</p>
+
+<blockquote><p><code class="javascript">[2,3] + [1,4]</code> gives a string <code class="javascript">"2,31,4"</code> in JavaScript, but shouldn't this produce <code class="javascript">[2,3,1,4]</code> (which is equivalent to <code class="javascript">Array.concat([2,3], [1,4])</code> )?</p></blockquote>
+
+<p>To get these questions out of my head I created myself a table of data types and operations and then could focus on my work again ;-).<small><a id="ref2" href="#note2"><sup>**</sup></a></small></p>
+<p>This intellectual journey and reading about <a href="http://www.erlang.org/doc/reference_manual/functions.html">Erlang function clauses</a> lead me to believe that tables are optimal for expressing functions.</p>
+
+<h3>Is it just a way to let off steam?</h3>
+
+<p>Not really. I have found Humble very useful in my work. I use it to design modules and functions which are hard for me to code straight away in the language I am working in.</p>
+
+<p>As soon as I added tables to Humble, I used the new syntax to write a complex JavaScript module at my work. Before that I was stuck with the module and it was hard for me to understand on how it should work.</p>
+
+<p>The reason this is so useful is that I reduced the friction and overhead involved in designing code as much as I could:</p>
+
+<ol>
+  <li><p>I use editors that I am very comfortable with (<a href="http://zim-wiki.org/">Zim desktop wiki</a>, <a href="http://www.rochesterschools.com/web/composer/default.htm">Seamonkey Composer</a>).</p></li>
+  <li><p>I used every trick I know to make Humble code more <a href="http://www.useit.com/alertbox/9710a.html">readable and understandable at a glance</a>.</p></li>
+  <li><p>I use a minimal number of code constructs that I am familiar with and/or think they would influence my thinking in a good way.</p></li>
+</ol>
+
+<p>It expands my ability to solve problems that otherwise would be beyond my reach.</p>
+
+<h3>More about it</h3>
+
+<p>If you are interested in a more comprehensive description of Humble, see the <a href="http://emilis.github.com/projects/humble.html">current spec</a>.</p>
+
+<p>I can't show you the last big piece of code I wrote with Humble here because I don't want to get into misunderstandings with my recent employer. I'll leave you with some code I wrote recently to see if Humble is useful in writing code for problems listed in <a href="http://rosettacode.org/">Rosetta Code</a>.</p>
+
+<h4>Examples</h4>
+
+<pre class="humble"><table><tbody>
+    <tr>
+        <td>99bottles</td>
+        <td><ul><li>map</li>
+                <ul><li>sequence 99 0</li>
+                    <li><table><tbody>
+                        <tr>
+                            <td>[1]</td>
+                            <td><ul><li>print "1 bottle of beer on the wall, 1 bottle of beer.\n Take one down and pass it around, no more bottles of beer on the wall."</li></ul></td>
+                        </tr>
+                        <tr>
+                            <td>[0]</td>
+                            <td><ul><li>print "No more bottles of beer on the wall, no more bottles of beer.\nGo to the store and buy some more, 99 bottles of beer on the wall."</li></ul></td>
+                        </tr>
+                        <tr>
+                            <td>[n]</td>
+                            <td><ul><li>sprint:</li><ol><li>"%s bottles of beer on the wall, %s bottles of beer.\n Take one down and pass it around, %s bottles of beer on the wall.\n"</li><li>$n</li><li>$n</li><li>(- $n 1)</li></ol></ul></td>
+                        </tr>
+                    </tbody></table></li>
+                </ul>
+        </ul></td>
+    </tr>
+    <tr>
+      <td>FizzBuzz</td>
+      <td><ul><li>map </li><ul><li>sequence 1 100</li><li><table>
+              <tbody>
+                <tr>
+                  <td>[n]</td>
+                  <td><table><tbody><tr><td nowrap="nowrap">(= 0 (% $n 15))</td>
+                        <td>                 <ul><li>print "FizzBuzz"</li></ul></td>
+                      </tr>
+<tr>
+                        <td>(= 0 (% $n 3))</td>
+                        <td><ul><li>print "Fizz"</li></ul></td>
+                      </tr>
+                      <tr>
+                        <td>(= 0 (% $n 5))</td>
+                        <td><ul><li>print "Buzz"</li></ul></td>
+                      </tr>
+                    </tbody>
+                  </table></td></tr></tbody></table></li></ul></ul></td></tr><tr>
+      <td>sequence      </td>
+      <td><table><tbody><tr><td>[to]</td>
+            <td><ul><li>sequence 0 $to</li></ul></td>
+          </tr>
+          <tr>
+            <td>[from, to]</td>
+            <td><ul><li>sequence $from $to 1</li></ul></td>
+          </tr>
+          <tr>
+            <td nowrap="nowrap">[from, to, step]</td>
+            <td><ul><li>while:</li><ul><li>&lt; $from $to</li><li>do:</li><ul><li>yield $from <i>// this one generates values</i></li><li>set from:</li><ul><li>+ $from $step</li></ul></ul></ul></ul></td></tr></tbody></table></td></tr></tbody></table></pre>
+
+
+<h3>Notes</h3>
+
+<p id="note1"><a href="#ref1"><sup>*</sup></a>
+ Previously I used <a href="http://zim-wiki.org/">Zim desktop wiki</a> to write my Humble code. Zim does 
+not support tables, so I was just writing bullet-lists. But then I 
+started using <a href="http://www.rochesterschools.com/web/composer/default.htm">Seamonkey Composer</a> for that and was able to write the tables
+ and to create myself a CSS file to make the code more beautiful.</p>
+
+<blockquote>
+  <p><small>It
+ is interesting to note (and very visible in this case) how the choice 
+of an editor influences what you can and cannot do with your code.</small></p>
+</blockquote>
+
+<blockquote>
+  <p><small>I am once more amazed that the editor I used to create my first web <em>pages</em> 14 years ago is still the most convenient for some jobs today.</small>
+  </p>
+</blockquote>
+
+<p id="note2"><a href="#ref2"><sup>**</sup></a> If you are very curious, you can see the table in a raw form, without any explanations <a href="/projects/humble/types-operations.html">here</a>.</p>
+
+<ul>
+
+
+</ul>
+
+
+
+
+
+
+
+
+
+
+</body></html>

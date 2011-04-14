@@ -1,0 +1,469 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head>
+
+  <meta content="text/html; charset=ISO-8859-1" http-equiv="Content-Type">
+<title>Data type operations</title></head><body>
+<table border="1" cellpadding="5">
+  <tbody>
+    <tr>
+      <th valign="top"><b><br>
+      </b></th>
+      <th valign="top">Number<br>
+      </th>
+      <th valign="top">List<br>
+      </th>
+      <th valign="top">String<br>
+      </th>
+      <th valign="top">Dict<br>
+      </th>
+      <th valign="top">Action<br>
+      </th>
+      <th valign="top">Command<br>
+      </th>
+    </tr>
+    <tr>
+      <td valign="top"><b>Example<br>
+      </b></td>
+      <td valign="top">42<br>
+      </td>
+      <td valign="top">[a, b, c]<br>
+      </td>
+      <td valign="top">"abc"<br>
+      </td>
+      <td valign="top">{a: b, c: d}<br>
+      </td>
+      <td valign="top">(cmd arg1 arg2)<br>
+      </td>
+      <td valign="top">[args, act1, act2]<br>
+      </td>
+    </tr>
+    <tr>
+      <td valign="top"><b>a+b<br>
+      </b></td>
+      <td valign="top">2+3<br>
+&#8594; 5<br>
+      </td>
+      <td valign="top">[a,b] + [c,d]<br>
+&#8594; [a,b,c,d]<br>
+      </td>
+      <td valign="top">"ab"+"cd"<br>
+&#8594;"abcd"<br>
+      </td>
+      <td valign="top">{a: b} + {c: d}<br>
+&#8594; {a: b, c: d}<br>
+      </td>
+      <td valign="top">A1+A2<br>
+&#8594; <i>do</i> A1 A2<br>
+      </td>
+      <td valign="top">[a1, A1, A2] + [a2, A3, A4]<br>
+&#8594; [a0, [<i>apply</i>, c1, a0], [<i>apply</i>, c2, a0]]<br>
+      </td>
+    </tr>
+    <tr>
+      <td valign="top"><b>a-b<br>
+      </b></td>
+      <td valign="top">2-3<br>
+&#8594; 1<br>
+      </td>
+      <td valign="top">[a,b]-[a,d]<br>
+&#8594; [b]<br>
+      </td>
+      <td valign="top">"abcabc"-"ab"<br>
+&#8594; "cabc"<br>
+?&#8594; "cc"<br>
+      </td>
+      <td valign="top">{a:b, c:d} - {a:b, c:e}<br>
+&#8594; {c:d}<br>
+      </td>
+      <td valign="top">A1 - A2 // A1 == A2<br>
+&#8594; ()<br>
+(c1 a b) - A2<br>
+&#8594; (c1-A2, a, b)<br>
+      </td>
+      <td valign="top">c1 - c2 // c1 == c2<br>
+&#8594; <i>skip</i><br>
+[a, A1, A2] - c2<br>
+&#8594; [a, A1-c2, A2-c2]<br>
+      </td>
+    </tr>
+    <tr>
+      <td valign="top"><b>a*b<br>
+      </b></td>
+      <td valign="top">2*3<br>
+&#8594; 6<br>
+      </td>
+      <td valign="top">[a,b]*2<br>
+&#8594; [a,b,a,b]<br>
+      </td>
+      <td valign="top">"abc"*2<br>
+&#8594;"abcabc"<br>
+      </td>
+      <td valign="top">{a:b}*2<br>
+&#8594; !error<br>
+      </td>
+      <td valign="top">A1*2<br>
+&#8594; <i>do</i> A1 A1<br>
+      </td>
+      <td valign="top">C1*2<br>
+&#8594; [a0, (<i>apply</i> C1 a0), (<i>apply</i> C1 a0)]<br>
+      </td>
+    </tr>
+    <tr>
+      <td valign="top"><b>a/b<br>
+      </b></td>
+      <td valign="top">2/3<br>
+&#8594; 0.66...<br>
+      </td>
+      <td valign="top">[a, b]/2<br>
+&#8594; [[a],[b]]<br>
+      </td>
+      <td valign="top">"abc"/2<br>
+&#8594; ["ab", "c"]<br>
+      </td>
+      <td valign="top">{a:b,c:d}/2<br>
+&#8594; !error<br>
+      </td>
+      <td valign="top">(c a b) / 2<br>
+&#8594; !error<br>
+?&#8594; (<i>do</i> (c a) (c b))<br>
+      </td>
+      <td valign="top">C1/2<br>
+&#8594; !error<br>
+      </td>
+    </tr>
+    <tr>
+      <td valign="top"><b>a[b]<br>
+      </b></td>
+      <td valign="top">&#8594; !error<br>
+      </td>
+      <td valign="top">L[N]<br>
+&#8594; x<br>
+&#8594; <i>null</i><br>
+      <br>
+L[~N]<br>
+&#8594; !error<br>
+      </td>
+      <td valign="top">S[N]<br>
+&#8594; c<br>
+&#8594; ""<br>
+      <br>
+S[~N]<br>
+&#8594; !error<br>
+      </td>
+      <td valign="top">{a:b}[a]<br>
+&#8594; b<br>
+{a:b}[c]<br>
+&#8594; <i>null</i><br>
+      </td>
+      <td valign="top">(c a b)[0]<br>
+&#8594; c<br>
+(c a b)[2]<br>
+&#8594; b<br>
+(c a b)[3]<br>
+&#8594; <i>null</i><br>
+A[S]<br>
+&#8594; A[A[0][0].indexOf(S)]<br>
+      <br>
+A[~S|~N]<br>
+&#8594; !error<br>
+      </td>
+      <td valign="top">[args, A1, A2][0]<br>
+&#8594; args<br>
+[args, A1, A2][2]<br>
+&#8594; A2<br>
+      <br>
+C[~N]<br>
+&#8594; !error<br>
+? C[S] &#8594; As<br>
+      </td>
+    </tr>
+    <tr>
+      <td valign="top"><b>a.indexOf(b)<br>
+      </b></td>
+      <td valign="top">&#8594; !error<br>
+      </td>
+      <td valign="top">L.indexOf(a)<br>
+&#8594; N<br>
+&#8594; -1<br>
+      </td>
+      <td valign="top">S.indexOf(s1)<br>
+&#8594; N<br>
+&#8594; -1<br>
+      <br>
+S.indexOf(~S)<br>
+&#8594; !error<br>
+      </td>
+      <td valign="top">{a:b}.indexOf(b)<br>
+&#8594; a<br>
+{a:b}.indexOf(c)<br>
+&#8594; <i>undefined</i><br>
+?&#8594; <i>null</i><br>
+      </td>
+      <td valign="top">A.indexOf(x)<br>
+&#8594; N<br>
+&#8594; -1<br>
+      </td>
+      <td valign="top">C.indexOf(A)<br>
+&#8594; N<br>
+&#8594; -1<br>
+C.indexOf(S)<br>
+&#8594; N<br>
+&#8594; -1<br>
+      <br>
+C.indexOf(~A|~S)<br>
+&#8594; !error<br>
+      </td>
+    </tr>
+    <tr>
+      <td valign="top"><b>a[b:c]</b><br>
+      </td>
+      <td valign="top">&#8594; !error<br>
+      </td>
+      <td valign="top">[a,b,c,d][1:2]<br>
+&#8594; [b,c]<br>
+      </td>
+      <td valign="top">"abcd"[1:2]<br>
+&#8594; "bc"<br>
+      </td>
+      <td valign="top">&#8594; !error<br>
+      </td>
+      <td valign="top">(c a b d e f)[1:2]<br>
+&#8594; [a, b]<br>
+      </td>
+      <td valign="top">[args, A1, A2, A3][1:2]<br>
+&#8594; [A1, A2]<br>
+      </td>
+    </tr>
+    <tr>
+      <td valign="top"><b>a.split(b)<br>
+      </b></td>
+      <td valign="top">&#8594; !error<br>
+      </td>
+      <td valign="top">[a,b,c].split(b)<br>
+&#8594; [[a],[c]]<br>
+      </td>
+      <td valign="top">S.split(S|N|<i>null</i>)<br>
+&#8594; [...]<br>
+      <br>
+S.split(~S|~N|~<i>null</i>)<br>
+&#8594; !error<br>
+      </td>
+      <td valign="top">D.split(...)<br>
+&#8594; !error<br>
+      </td>
+      <td valign="top">(c a b).split(a)<br>
+&#8594; (<i>do</i> (c a) (c b))<br>
+      </td>
+      <td valign="top">[args, A1, A2].split(A1)<br>
+&#8594; [[args A1], [args A2]]<br>
+      <br>
+C.split(~A|~N)<br>
+&#8594; !error<br>
+      </td>
+    </tr>
+    <tr>
+      <td valign="top"><b>a.join(b)<br>
+      <br>
+      </b>?.join(~S|~N|<i>null</i>)<br>
+&#8594; !error<b><br>
+      </b></td>
+      <td valign="top">&#8594; !error<br>
+      </td>
+      <td valign="top">L.join()<br>
+&#8594; L.join(",")<br>
+[a,b,c].join("s")<br>
+&#8594; "asbsc"<br>
+      </td>
+      <td valign="top">"abc".join("s")<br>
+&#8594; "asbsc"<br>
+      </td>
+      <td valign="top">D.join()<br>
+&#8594; D.join(",")<br>
+D.join(s1)<br>
+&#8594; D.join(s1, ":")<br>
+{a:b,c:d}.join(s1, s2)<br>
+&#8594; ""+a+s1+b+s2+c+s1+d<br>
+      </td>
+      <td valign="top">A.join()<br>
+&#8594; A.join(" ")<br>
+A.join(s)<br>
+&#8594; A.map(toString).join(s)<br>
+      </td>
+      <td valign="top">C.join()<br>
+&#8594; C.join("\n* ")<br>
+C.join(s)<br>
+&#8594; C.map(toString).join(s) <br>
+      </td>
+    </tr>
+    <tr>
+      <td valign="top"><b>a.replace(b, c)<br>
+      </b></td>
+      <td valign="top">&#8594; !error<br>
+      </td>
+      <td valign="top">[a,b,c].replace(a, d)<br>
+&#8594; [d,b,c]<br>
+      </td>
+      <td valign="top">"abc".replace("a", "d")<br>
+&#8594; "dbc"<br>
+      <br>
+S.replace(~S)<br>
+&#8594; !error<br>
+      </td>
+      <td valign="top">{a:b,c:d}.replace(a, d)<br>
+&#8594; {a:d, c:d}<br>
+      </td>
+      <td valign="top">(c a b).replace(a, d)<br>
+&#8594; (c d b)<br>
+      </td>
+      <td valign="top">[args, A1, A2].replace(A1, A3)<br>
+&#8594; [args, A3, A2]<br>
+      <br>
+C.replace(~A)<br>
+&#8594; !error<br>
+      </td>
+    </tr>
+    <tr>
+      <td valign="top"><b>a.match(b)<br>
+      </b></td>
+      <td valign="top">&#8594; !error<br>
+      </td>
+      <td valign="top">L.match(C)<br>
+&#8594; L.filter(C).length &gt; 0<br>
+L.match(~C)<br>
+&#8594; <i>true<br>
+      </i>&#8594;<i> false<br>
+      </i></td>
+      <td valign="top">S.match(C)<br>
+
+&#8594; (C S)<br>
+&nbsp;&nbsp;&nbsp; &#8594; <i>true</i><br>
+&nbsp;&nbsp;&nbsp; &#8594; <i>false</i><br>
+&nbsp;&nbsp;&nbsp; &#8594; !error<br>
+S.match(s)<br>
+&#8594; S.indexOf(s) &gt; -1<br>
+      <br>
+S.match(~S|~N|~C)<br>
+&#8594; !error<br>
+      </td>
+      <td valign="top">D.match(C)<br>
+&#8594; D.filter(C).length &gt; 0<br>
+{a:b,c:d}.match(a)<br>
+&#8594; <i>false</i><br>
+{a:b,c:d}.match(b)<br>
+&#8594; <i>true<br>
+      <br>
+      </i></td>
+      <td valign="top"><br>
+      </td>
+      <td valign="top"><br>
+      </td>
+    </tr>
+    <tr>
+      <td valign="top"><b>a.filter(b)<br>
+      </b></td>
+      <td valign="top">&#8594; !error<br>
+      </td>
+      <td valign="top">L.filter(C)<br>
+&#8594; L' // where (C li)<br>
+L.filter(D)<br>
+&#8594; L' // where D[li]<br>
+L.filter(x)<br>
+&#8594; []<br>
+&#8594; [x,x,...]<br>
+      </td>
+      <td valign="top">S.filter(C)<br>
+&#8594; (C S)<br>
+&nbsp;&nbsp;&nbsp; &#8594; S'<br>
+S.filter(s)<br>
+&#8594; ""<br>
+&#8594; s + s + ...<br>
+      </td>
+      <td valign="top">D.filter(C)<br>
+&#8594; D' // where (C k v)<br>
+D.filter(x)<br>
+&#8594; {}<br>
+&#8594; {x:y}<br>
+      </td>
+      <td valign="top">(c a b).filter(C)<br>
+&#8594; ???<br>
+      </td>
+      <td valign="top"><br>
+      </td>
+    </tr>
+    <tr>
+      <td valign="top"><b>a.map(b)<br>
+      </b></td>
+      <td valign="top">&#8594; !error<br>
+      </td>
+      <td valign="top">L.map(C)<br>
+&#8594; L'<br>
+L.map(D)<br>
+&#8594; L'<br>
+L.map(L2)<br>
+&#8594; [L2[a], L2[b],...]<br>
+L.map(s)<br>
+&#8594; [s,s,...]<br>
+      </td>
+      <td valign="top">S.map(C)<br>
+&#8594; S'<br>
+      </td>
+      <td valign="top">D.map(C)<br>
+&#8594; <br>
+      </td>
+      <td valign="top"><br>
+      </td>
+      <td valign="top"><br>
+      </td>
+    </tr>
+    <tr>
+      <td valign="top"><b><br>
+      </b></td>
+      <td valign="top"><br>
+      </td>
+      <td valign="top"><br>
+      </td>
+      <td valign="top"><br>
+      </td>
+      <td valign="top"><br>
+      </td>
+      <td valign="top"><br>
+      </td>
+      <td valign="top"><br>
+      </td>
+    </tr>
+    <tr>
+      <td valign="top"><b><br>
+      </b></td>
+      <td valign="top"><br>
+      </td>
+      <td valign="top"><br>
+      </td>
+      <td valign="top"><br>
+      </td>
+      <td valign="top"><br>
+      </td>
+      <td valign="top"><br>
+      </td>
+      <td valign="top"><br>
+      </td>
+    </tr>
+    <tr>
+      <td valign="top"><b><br>
+      </b></td>
+      <td valign="top"><br>
+      </td>
+      <td valign="top"><br>
+      </td>
+      <td valign="top"><br>
+      </td>
+      <td valign="top"><br>
+      </td>
+      <td valign="top"><br>
+      </td>
+      <td valign="top"><br>
+      </td>
+    </tr>
+  </tbody>
+</table>
+<br>
+</body></html>
