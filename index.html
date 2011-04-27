@@ -13,3 +13,10 @@ var idcomments_post_url = '{{site.posts.first.url}}';
 </script>
 <script type="text/javascript" src="http://www.intensedebate.com/js/genericLinkWrapperV2.js"></script>
 </div>
+
+<hr style="margin: 3em 0 2em;">
+<h2>Previous posts:</h2>
+{% for post in site.posts limit:10 %}
+    <p>{{ post.date | date_to_string }} <a href='{{ post.url }}'>{{ post.title }}</a></p>
+{% endfor %}
+
