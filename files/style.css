@@ -50,6 +50,10 @@ div.project {
         margin-top: 15px;
     }
 
+.post p {
+    line-height: 22px;
+}
+
 /* layout */
 
 #header {
