@@ -1,0 +1,241 @@
+
+<style type="text/css">
+
+    .window {
+        font-family: Arial, sans-serif;
+        font-size: 13px;
+        border: 1px solid #888a85;
+        border-collapse: collapse;
+        margin: 10px;
+    }
+
+    .window td {
+        border: 1px solid #888a85;
+        background-color: #ecf0eb;
+        padding: 0;
+        vertical-align: top;
+    }
+
+    .window th {
+        padding: 2px;
+        font-size: 15px;
+        text-align: center;
+        font-weight: bold;
+        background-color: #2e3436;
+        color: #fff;
+    }
+
+    td.tree {
+        padding: 10px 0 0 10px;
+        width: 180px;
+    }
+
+        .tree ul,
+        .tree li {
+            list-style: none;
+            display: block;
+            padding: 0;
+            margin: 0;
+        }
+
+        .tree ul {
+            margin: 5px 0 5px 5px;
+        }
+
+        .tree > ul > li {
+            font-weight: bold;
+            color: #888a85;
+        }
+            
+            .tree > ul > li > ul > li {
+                border: 1px solid #d3d7cf;
+                border-width: 1px 0 1px 1px;
+                background-color: #f7f8f9;
+                font-weight: normal;
+                padding: 5px;
+                cursor: pointer;
+                color: black;
+            }
+
+            .tree > ul > li > ul > li:hover {
+                background-color: #ecf0eb;
+            }
+
+            .tree > ul > li > ul > li.active {
+                background-color: #fff;
+                font-weight: bold;
+            }
+
+
+    .window .shell {
+        font-family: DejaVu Sans Mono, Andale Mono, monospace;
+        font-size: 9pt;
+        background-color: #fff;
+    }
+
+        .shell > div {
+            padding: 5px 10px;
+            white-space: pre;
+        }
+
+        .command {
+            background-color: #f7f8f5;
+            border-top: 1px solid #babdb6;
+        }
+
+            .command > span {
+                font-weight: bold;
+                display: block;
+                float: right;
+            }
+
+        .output {
+            background-color: #fff;
+        }
+
+        div.limited {
+            height: 200px;
+            width: 650px;
+            overflow: auto;
+            
+        }
+
+</style>
+
+<table class="window">
+    <thead><tr><th colspan="3">Grand Terminal</th></tr></thead>
+    <tbody><tr>
+            <td class="tree">
+                <ul>
+                    <li>General
+                        <ul>
+                            <li>~: root@emilis-laptop</li>
+                            <li>tmp: emilis@emilis-laptop</li>
+                        </ul></li>
+                    <li>Project 1
+                        <ul>
+                            <li>vim</li>
+                            <li class="active">shell</li>
+                            <li>web server</li>
+                        </ul></li>
+                    <li>Project 2
+                        <ul>
+                            <li>vim</li>
+                            <li>shell</li>
+                        </ul></li>
+                    <li>Servers
+                        <ul>
+                            <li>emilis@website1</li>
+                            <li>emilis@website2</li>
+                            <li>emilis@home-server</li>
+                        </ul></li>
+                </ul>
+            </td>
+            <td class="shell">
+<div class="command"><span>&nabla;</span>emilis@emilis-laptop:~/work/emilis-config$ <b>ls -la</b></div>
+<div class="output">total 44
+drwxr-xr-x   5 emilis emilis 4096 2011-09-12 01:53 .
+drwxr-xr-x 121 emilis emilis 4096 2011-09-12 01:37 ..
+-rw-r--r--   1 emilis emilis  555 2011-09-12 01:53 .bash_aliases
+-rw-r--r--   1 emilis emilis 1148 2011-09-12 01:37 .bash_ps1
+-rw-r--r--   1 emilis emilis 3372 2011-09-12 01:53 .bashrc
+drwxr-xr-x   3 emilis emilis 4096 2011-09-12 01:46 .config
+-rw-------   1 emilis emilis 3876 2011-09-12 01:41 .conkyrc
+drwxr-xr-x   8 emilis emilis 4096 2011-09-12 01:54 .git
+-rw-r--r--   1 emilis emilis   17 2011-09-12 01:40 .gitignore
+drwxr-xr-x   6 emilis emilis 4096 2011-09-12 01:38 .vim
+-rw-r--r--   1 emilis emilis 1133 2011-09-12 01:40 .vimrc</div>
+<div class="command"><span>&raquo;</span>emilis@emilis-laptop:~/work/emilis-config$ <b>cat *</b></div>
+<div class="command"><span>&nabla;</span>emilis@emilis-laptop:~/work/emilis-config$ <b>cat .bashrc</b></div>
+<div class="output limited"># ~/.bashrc: executed by bash(1) for non-login shells.
+# see /usr/share/doc/bash/examples/startup-files (in the package bash-doc)
+# for examples
+
+# If not running interactively, don't do anything
+[ -z "$PS1" ] &amp;&amp; return
+
+# don't put duplicate lines in the history. See bash(1) for more options
+export HISTCONTROL=ignoredups
+# ... and ignore same sucessive entries.
+export HISTCONTROL=ignoreboth
+
+# check the window size after each command and, if necessary,
+# update the values of LINES and COLUMNS.
+shopt -s checkwinsize
+
+# make less more friendly for non-text input files, see lesspipe(1)
+[ -x /usr/bin/lesspipe ] &amp;&amp; eval "$(SHELL=/bin/sh lesspipe)"
+
+# set variable identifying the chroot you work in (used in the prompt below)
+if [ -z "$debian_chroot" ] &amp;&amp; [ -r /etc/debian_chroot ]; then
+    debian_chroot=$(cat /etc/debian_chroot)
+fi
+
+# set a fancy prompt (non-color, unless we know we "want" color)
+case "$TERM" in
+    xterm-color) color_prompt=yes;;
+esac
+
+# uncomment for a colored prompt, if the terminal has the capability; turned
+# off by default to not distract the user: the focus in a terminal window
+# should be on the output of commands, not on the prompt
+force_color_prompt=yes
+
+if [ -n "$force_color_prompt" ]; then
+    if [ -x /usr/bin/tput ] &amp;&amp; tput setaf 1 &gt;&amp;/dev/null; then
+    # We have color support; assume it's compliant with Ecma-48
+    # (ISO/IEC-6429). (Lack of such support is extremely rare, and such
+    # a case would tend to support setf rather than setaf.)
+    color_prompt=yes
+    else
+    color_prompt=
+    fi
+fi
+
+
+
+if [ "$color_prompt" = yes ]; then
+
+    PS1='${debian_chroot:+($debian_chroot)}\u@\h:\w\$ '
+
+else
+    PS1='${debian_chroot:+($debian_chroot)}\u@\h:\w\$ '
+fi
+unset color_prompt force_color_prompt
+
+# If this is an xterm set the title to user@host:dir
+case "$TERM" in
+xterm*|rxvt*)
+    PROMPT_COMMAND='echo -ne "\033]0;${USER}@${HOSTNAME}: ${PWD/$HOME/~}\007"'
+    ;;
+*)
+    ;;
+esac
+
+# Alias definitions.
+# You may want to put all your additions into a separate file like
+# ~/.bash_aliases, instead of adding them here directly.
+# See /usr/share/doc/bash-doc/examples in the bash-doc package.
+
+if [ -f ~/.bash_aliases ]; then
+    . ~/.bash_aliases
+fi
+
+
+
+# enable programmable completion features (you don't need to enable
+# this, if it's already enabled in /etc/bash.bashrc and /etc/profile
+# sources /etc/bash.bashrc).
+if [ -f /etc/bash_completion ]; then
+    . /etc/bash_completion
+fi
+
+if [ -f "$HOME/.bash_ps1" ]; then
+    . "$HOME/.bash_ps1"
+fi</div>
+<div class="command"><span>&crarr;</span>emilis@emilis-laptop:~/work/emilis-config$ <b><blink>_</blink></b></div>
+
+            </td>
+            <td><div style="height: 580px; overflow: scroll;"><div style="width:1px; height: 6000px;"></div></td>
+    </tr></tbody>
+</table>
