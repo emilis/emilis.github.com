@@ -3,16 +3,16 @@ layout: post
 title: One Little Customization to One Mans Bash Prompt...
 ---
 
-<p>I see there have been a number Bash tips posts on Hacker News recently.</p>
+<p>I see there have been a number Bash tips posts on <a href="http://news.ycombinator.com/news">Hacker News</a> recently.</p>
 <p>Let me share an improvement for the shell I made myself only lately.</p>
 
 <h3>Grand Design</h3>
 
 <p>First a little explanation: I have a vision of how I would like my terminal application to look like:</p>
 
-<p><a href="/projects/terminal.html"><img src="/projects/terminal/design.png"></a></p>
+<p><a href="/projects/terminal.html"><img src="/projects/terminal/design.png" alt="Grand Terminal design"></a></p>
 
-<p><em>This design would work very well with the overall UI configuration on my Ubuntu box (I have taskbar on the left, use Tree Style Tabs for Firefox, Zim desktop wiki).</em></p>
+<p><em>This design would work very well with the overall UI configuration on my Ubuntu box (I have panel and taskbar on the left, use <a href="https://addons.mozilla.org/en-US/firefox/addon/tree-style-tab/">Tree Style Tab</a> for Firefox, <a href="http://zim-wiki.org/">Zim desktop wiki</a>).</em></p>
 
 <h3>Pathetic Implementation</h3>
 
@@ -20,7 +20,7 @@ title: One Little Customization to One Mans Bash Prompt...
 
 <p>So a couple of weeks ago I made myself a crutch -- tweaked my Bash prompt. It now looks like this:</p>
 
-<p><img src="/projects/terminal/current.png"></p>
+<p><img src="/projects/terminal/current.png" alt="How my shell looks currently"></p>
 
 <p>Although I didn't add much (just a separator line and bold style for command text) it took me some time to play with various colours and styles to achieve this effect.</p>
 
@@ -39,7 +39,8 @@ fi
 
 <p>I bet some of you will now go and play with your Bash prompt configuration. Let me offer you a comment by some unnamed Ubuntu/Debian maintainer wizards I found while playing with my .bashrc:</p>
 
-<blockquote># uncomment for a colored prompt, if the terminal has the capability; turned off by default to not distract the user: <em>the focus in a terminal window should be on the output of commands, not on the prompt</em><br>
+<blockquote># uncomment for a colored prompt, if the terminal has the capability;<br>
+# turned off by default to not distract the user: <strong>the focus in a terminal window should be on the output of commands, not on the prompt</strong><br>
 # force_color_prompt=yes
 </blockquote>
 
