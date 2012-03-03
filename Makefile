@@ -1,3 +1,11 @@
+.PHONY: default build deploy
 
-default :
+
+default: build
+
+
+build:
 	jekyll
+
+deploy:
+	git push
