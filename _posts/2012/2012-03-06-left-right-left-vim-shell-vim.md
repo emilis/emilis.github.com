@@ -1,7 +1,6 @@
 ---
 layout: post
 title: Left Right Left... Vim Shell Vim...
-published: false
 categories:
     - bash
     - vim
