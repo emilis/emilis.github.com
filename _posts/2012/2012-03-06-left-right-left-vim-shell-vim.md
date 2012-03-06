@@ -1,6 +1,6 @@
 ---
 layout: post
-title: WebOS cards-like interaction for Vim users
+title: Left Right Left... Vim Shell Vim...
 published: false
 categories:
     - bash
