@@ -16,7 +16,7 @@ I think **gathering** data is a big part of the privacy problem that may be solv
 
 I also think privacy conscious organizations (like the [Mozilla Foundation](https://mozilla.org/)) should lead others by avoiding to gather information about me.
 
-But I received this message today from Mozilla, full of tracking links and images. See for yourself:
+But I received this message <strike>today</strike> **a couple of days ago** from Mozilla, full of tracking links and images. See for yourself:
 
     Date: Fri, 14 Jun 2013 17:28:38 +0000
     ...
