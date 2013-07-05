@@ -55,8 +55,25 @@ div.project {
         margin: 37px 0 5px 10px;
     }
 
-.post p {
+.post p,
+.comment p {
     line-height: 22px;
+}
+
+.comments {
+    border-top:         1px solid #ccc;
+    margin:             10px 0 0;
+}
+
+.comment {
+    padding:            0 10px;
+    background-color:   #eee;
+    border:             1px solid #ccc;
+    margin:             0 0 10px;
+}
+
+.comment.child {
+    margin-left:        20px;
 }
 
 /* layout */

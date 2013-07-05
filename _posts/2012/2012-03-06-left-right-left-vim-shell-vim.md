@@ -4,6 +4,17 @@ title: Left Right Left... Vim Shell Vim...
 categories:
     - bash
     - vim
+comments:
+    -   id: 522205841 
+        name: MantasK 
+        date: 2012-12-18 11:36:54 
+        text: " I'd say go with standard Unix foreground / background process control instead:$ vim// do stuff in VIMCTRL+Z &larr; suspend vim// so stuff in shell$ fg &larr; restore vim "
+    -   id: 595406399 
+        name: "@jmcclare "
+        url: http://twitter.com/jmcclare 
+        date: 2013-03-14 18:10:09 
+        text: " I'm with MantasK. I just move vim in and out of the foreground to do other things in the same shell. I also prefer tmux windows to Gnome Terminal tabs. Just as with vim, I prefer things to be hidden when I'm not using them.tmux also makes switching very fast. 'Ctrl-a, a' to see your list of terminals. 'Ctrl-a 3' to switch to terminal 3, etc. If you want your prompt to tell you when you're inside a vim shell, add something to your $PS1 when the $VIM environment variable is set.I have $PROMPT_COMMAND set to function that updates my $PS1 each time it is displayed. The whole thing is pretty large. It has colors and a lot of other indicators like this. Here's a short example for vim detection. In your ~/.bashrc, or a file sourced from it: build_custom_prompt () {$status=\"${USER}@${HOSTNAME} $(pwd)\"; Add an indicator if we are inside a Vim shellif [ ! -z \"${VIM}\"]; then $status=\"Vim \"${status} fi PS1=\"${status} \\$ \"}PROMPT_COMMAND=build_custom_prompt I also make the Vim indicator bold green. "
+
 ---
 I added a couple of configuration lines and can now switch between Vim and a child shell session with `Alt+Left/Right`. Like this:
 

@@ -6,14 +6,21 @@ layout: master
   <h1><a href='{{page.url}}'>{{page.title}}</a></h1>
   {{ content }}
 </div>
-<script>
-var idcomments_acct = '672478f0805d1f7e8619ac492688b464';
-var idcomments_post_id = '{{page.id}}';
-var idcomments_post_url = '{{page.url}}';
-</script>
-<span id="IDCommentsPostTitle" style="display:none"></span>
-<script type='text/javascript' src='http://www.intensedebate.com/js/genericCommentWrapperV2.js'></script>
-
+{% if page.comments %}
+<div id="comments" class="comments">
+    <h2>Archived comments:</h2>
+    {% for c in page.comments %}
+    <div id="{{ c.id }}" {% if c.parentid %}class="comment child"{% else %}class="comment"{% endif %}>
+        <p>
+            {% if c.url %}<a href="{{ c.url }}"><b>{{ c.name }}</b></a>
+            {% else %}<b>{{ c.name }}</b>
+            {% endif %}
+            <small>@ {{ c.date | date: "%Y-%m-%d %H:%M %Z" }}</small></p>
+        <p>{{ c.text }}</p>
+    </div>
+    {% endfor %}
+</div>
+{% endif %}
 
 <!--
 <div class="related">
