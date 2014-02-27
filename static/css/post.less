@@ -1,0 +1,92 @@
+#main {
+
+    > .content.first-post {
+
+        > h2 > a {
+            > time {
+                display:    inline-block;
+                float:      right;
+                font-size:  85%;
+                color:      @graycc;
+            }
+        }
+    }
+
+    > .content.post-meta {
+
+        margin-top:     3em;
+        margin-bottom:  2em;
+        color:          @gray99;
+
+        a {
+            color:      @bluedd;
+        }
+        a:visited {
+            color:      @bluecc;
+        }
+    }
+
+    #posts-nav {
+        
+        > div > a {
+
+            padding:    1em 0;
+
+            &.next {
+                text-align:     right;
+            }
+
+            &.prev > i.fa {
+                padding-right:  0.5em;
+            }
+            &.next > i.fa {
+                padding-left:   0.5em;
+            }
+        }
+    }
+
+    #comments {
+
+        padding-top:        0.5em;
+        padding-bottom:     1em;
+        background-color:   @yellowee;
+        color:              @yellow33;
+
+        > .comment {
+
+            .frame {
+                display:            inline-block;
+                padding:            4px;
+                margin-right:       0.5em;
+                border:             1px solid @yellowdd;
+                border-radius:      4px;
+                background-color:   @white;
+                text-align:         center;
+
+                > img {
+                    width:      1.5em;
+                    height:     1.5em;
+                }
+            }
+        }
+
+        > .alert {
+            margin-top:         2em;
+            background-color:   @yellowfe;
+        }
+
+        a:hover,
+        a:focus {
+            background-color:   @yellowfe;
+        }
+
+        time {
+            font-size:  85%;
+            color:      @yellow66;
+        }
+
+        .fa:before {
+            margin-right:   0.5em;
+        }
+    }
+}

@@ -1,0 +1,20 @@
+---
+layout:     page
+title:      Archive
+---
+{% capture year %}-{% endcapture %}
+{% for post in site.posts %}
+    {% capture curyear %}{{ post.date | date: "%Y" }}{% endcapture %}
+    {% if year != curyear %}
+        </ul>
+        <h3>{{ curyear }}</h3>
+        <ul class="related-posts no-year full-width">
+    {% endif %}
+    <li><a href="{{ post.url }}" title="{{ post.title }}">
+        <time>{{ post.date | date: "%m-%d" }}</time>
+        <span class="title">{{ post.title }}</span>
+    </a></li>
+
+    {% capture year %}{{ curyear }}{% endcapture %}
+{% endfor %}
+</ul>

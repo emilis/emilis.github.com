@@ -1,0 +1,14 @@
+<section class="content post-meta">
+    <p>
+        {% assign tagsize = tpost.tags | size %}
+        {% if tagsize != 0 %}
+        <i class="fa fa-tags"></i> Tags: 
+        {% for t in tpost.tags %}
+        <a href="/temos/#tag-{{ t }}">{{ site.data.tags.titles[t] }}</a>{% if forloop.last %}.{% else %}, {% endif %}
+        {% endfor %}
+        <br>
+        {% endif %}
+        <i class="fa fa-calendar"></i> Published: {{ tpost.date | date: "%Y-%m-%d %H:%M" }}
+    </p>
+</section>
+

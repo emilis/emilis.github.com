@@ -1,38 +1,28 @@
 ---
-layout: master
+layout: default
 ---
-<div class='post'>
-  <span class='date'>{{page.date | date_to_string}}</span>
-  <h1><a href='{{page.url}}'>{{page.title}}</a></h1>
-  {{ content }}
-</div>
+<article class="content">
+    {{ content }}
+</article>
+
+{% assign tpost = page %}
+{% include post-meta.html %}
+
+{% include posts-nav.html %}
+
 {% if page.comments %}
-<div id="comments" class="comments">
-    <h2>Archived comments:</h2>
+<section id="comments" class="content">
+    <h2>Comments</h2>
     {% for c in page.comments %}
-    <div id="{{ c.id }}" {% if c.parentid %}class="comment child"{% else %}class="comment"{% endif %}>
-        <p>
-            {% if c.url %}<a href="{{ c.url }}"><b>{{ c.name }}</b></a>
-            {% else %}<b>{{ c.name }}</b>
-            {% endif %}
-            <small>@ {{ c.date | date: "%Y-%m-%d %H:%M %Z" }}</small></p>
-        <p>{{ c.text }}</p>
+    <div id="comment-{{ c.id }}" class="comment">
+        <p>{% if c.url %}<a href="{{ c.url }}">{% endif %}
+            <span class="frame">
+                {% if c.gravatar %}<img src="/static/img/gravatars/{{ c.gravatar }}.png">{% else %}<i class="fa fa-user"></i>{% endif %}
+            </span><strong>{{ c.name }}</strong>{% if c.url %}</a>{% endif %}
+            <time class="fa fa-clock-o">{{ c.date }}</time></p>
+        <blockquote>{{ c.text | newline_to_br }}</blockquote>
     </div>
     {% endfor %}
-</div>
+</section>
+{% include posts-nav.html %}
 {% endif %}
-
-<!--
-<div class="related">
-  <h3>Related Posts</h3>
-  <table class="post-list">
-    {% for post in site.related_posts limit:5 %}
-      <tr>
-        <th><a href='{{ post.url }}'>{{ post.title }}</a></th>
-        <td>{{ post.date | date_to_string }}</td>
-        <td><a href='{{post.url}}#disqus_thread'>Comments</a></td>
-      </tr>
-    {% endfor %}
-  </table>
-</div>
--->

@@ -1,0 +1,47 @@
+.alert {
+
+    padding:                0.5em;
+    border-radius:          4px;
+    background-color:       @grayee;
+    /// box-shadow:             1px 1px 2px @gray66;
+
+    &.error {
+        background-color:   @red99;
+        color:              @white;
+    }
+
+    &.warning {
+        background-color:   @yellowcc;
+        color:              @gray33;
+
+        &.important {
+            background-color:   @grayee;
+            color:              @redcc;
+            font-weight:        bold;
+        }
+    }
+
+    &.success {
+        background-color:   @green66;
+        color:              @greenfe;
+    }
+
+    &.info {
+        background-color:   @blue99;
+        color:              @bluefe;
+        a,
+        a:visited {
+            color:          @white;
+            &:hover{
+                background-color:   @bluedd;
+                border-bottom:      1px solid @white;
+            }
+        }
+    }
+}
+
+#main > .content > .alert {
+
+    margin-left:    -0.5em;
+    max-width:      ( @wContent - 0.5em );
+}

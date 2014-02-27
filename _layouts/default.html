@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Emilis@GitHub: {{ page.title }}</title>
+        <link rel="stylesheet" type="text/css" href="/static/style.css">
+        <link rel="stylesheet" type="text/css" href="/static/font-awesome.min.css">
+        <link rel="stylesheet" type="text/css" href="/files/humble-embed.css">
+        <link rel="alternate" type="application/rss+xml" href="http://feeds.feedburner.com/emilisgithubcom">
+    </head>
+    <body>
+
+<div id="layout">
+    <!-- Menu toggle -->
+    <label for="menu-radio" id="menuLink" class="menu-link"><span></span></label>
+    <input id="menu-radio" type="checkbox">
+
+    <nav id="menu">
+        <label for="menu-radio" id="close-menu">×</label>
+        <div class="pure-menu pure-menu-open">
+            <img id="emilis-photo" src="/static/img/emilis.png">
+            {% include menu.html %}
+            <a class="pure-menu-heading">About me:</a>
+            <p>My name is<br><strong>Emilis Dambauskas.</strong></p>
+            <p>I'm a 34 year old<br>web developer and<br>civic activist from<br>Vilnius, Lithuania.</p>
+        </div>
+    </nav>
+
+    <main id="main">
+        <header class="header">
+            <h1>{{ page.title }}</h1>
+            <h2>{% if page.subtitle %}
+                {{ page.subtitle }}
+                {% elsif page.date %}
+                {{ page.date | date: "%Y-%m-%d" }}
+                {% endif %}
+            </h2>
+        </header>
+
+        {{ content }}
+
+        <div class="footer-spacer"></div>
+        <footer id="footer">
+            {% include menu.html %}
+            <p class="clearfix"><small>
+                <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/deed.en_US"><img alt="Creative Commons License" style="border-width:0" src="/static/img/cc-by-nc-sa-4-80x15.png" /></a> <span xmlns:dct="http://purl.org/dc/terms/" href="http://purl.org/dc/dcmitype/Text" property="dct:title" rel="dct:type">Emilis.github.io</span> by <a xmlns:cc="http://creativecommons.org/ns#" href="http://emilis.github.io/" property="cc:attributionName" rel="cc:attributionURL">Emilis Dambauskas</a> is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/deed.en_US">CC BY-NC-SA 4.0 International License</a>.
+            </small></p>
+        </footer>
+    </main>
+    
+</div>
+
+    </body>
+</html>

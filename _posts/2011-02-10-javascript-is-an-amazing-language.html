@@ -19,7 +19,7 @@ title: JavaScript is an amazing language
 
 <p>Lets say we have this module definition in code:</p>
 
-<pre><code class="javascript">dojo.declare("MyModule", [], {
+<pre class="break"><code class="javascript">dojo.declare("MyModule", [], {
     method1: function(params) {
         // some code
     },
@@ -33,7 +33,7 @@ title: JavaScript is an amazing language
 
 <p>So I changed it to this:</p>
 
-<pre><code class="javascript">dojo.declare("MyModule", [], (function() {
+<pre class="break"><code class="javascript">dojo.declare("MyModule", [], (function() {
     
 // I chose "exports" for similarity to CommonJS:
 var exports = {};
@@ -69,7 +69,7 @@ return exports;
 
 <p>However I found this abused in our code. So I remembered the good old trick and used it instead:</p>
 
-<pre><code class="javascript">exports.someMethod = function() {
+<pre class="break"><code class="javascript">exports.someMethod = function() {
     
     var that = this;
     ...
@@ -93,7 +93,7 @@ return exports;
 
 <p>I needed to write code for a widget. The code involved Model definition (<a href="http://dev.sencha.com/deploy/dev/docs/?class=Ext.data.JsonStore">Ext.data.JsonStore</a>), View definition (<a href="http://dev.sencha.com/deploy/dev/docs/?class=Ext.XTemplate">Ext.XTemplate</a>) and widget definition:</p>
 
-<pre><code class="javascript">exports.createMyWidget = function() {
+<pre class="break"><code class="javascript">exports.createMyWidget = function() {
     
     // Model (not shown)
     // View (not shown)
@@ -111,7 +111,7 @@ return exports;
 
 <p>The "click" and other event handlers looked too heavy compared to other code, so I decided to move them into separate functions. And I did. To preserve code reading flow I moved them below the return statement:</p>
 
-<pre><code class="javascript">exports.createMyWidget = function() {
+<pre class="break"><code class="javascript">exports.createMyWidget = function() {
         
     // Model (not shown)
     // View (not shown)
@@ -132,4 +132,3 @@ return exports;
 
 
 <p>Seems like a trivial thing, but very nice. Now I feel more confident about managing complexity in my work.</p>
-
