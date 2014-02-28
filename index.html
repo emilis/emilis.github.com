@@ -21,7 +21,7 @@ subtitle:   Home
     <ul class="related-posts full-width">
         {% for post in site.posts limit:11 %}
         {% if forloop.index0 != 0 %}
-        <li><a href='{{ post.url }}'>
+        <li><a href="{{ post.url }}">
             <time>{{ post.date | date: "%Y-%m-%d" }}</time>
             <span class="title">{{ post.title }}</span>
         </a></li>
