@@ -46,8 +46,6 @@ A way to write complex asynchronous code using Make inspired code structures.
 
 The package is tested with Node.js, but it should also work on other JavaScript platforms.
 
-&nbsp;
-
 * * *
 
 
@@ -56,8 +54,6 @@ The package is tested with Node.js, but it should also work on other JavaScript 
 A data storage API specification for JavaScript and other scripting languages.
 
 I came up with the idea when having to juggle four different types of databases for KąVeikiaValdžia.lt.
-
-&nbsp;
 
 * * *
 
@@ -115,8 +111,6 @@ I liked RescueTime, but it didn't satisfy all my needs so I wrote these scripts.
 A palette with 29 extra colours added to Tango Icon Library palette.
 
 I used RGB value graphs to fine-tune the shades.
-
-&nbsp;
 
 &nbsp;
 
