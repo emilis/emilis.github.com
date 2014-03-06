@@ -1,6 +1,7 @@
 ---
 layout:     post
 title:      What the situation in Ukraine means for me in Lithuania
+image:      /static/2014/lithuania-on-map.png
 ---
 > I wanted to use this blog only for programming related posts. However the things I need to say are too important to be kept away.
 

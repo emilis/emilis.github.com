@@ -3,6 +3,9 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        {% if page.image %}
+        <meta property="og:image" content="{{ page.image }}">
+        {% endif %}
         <title>Emilis@GitHub: {{ page.title }}</title>
         <link rel="stylesheet" type="text/css" href="/static/style.css">
         <link rel="stylesheet" type="text/css" href="/static/font-awesome.min.css">
