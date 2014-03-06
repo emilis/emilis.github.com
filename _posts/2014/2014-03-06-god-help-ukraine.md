@@ -59,6 +59,8 @@ There is **one** basic but very important thing Ukrainian people need at the mom
 
 _You can reprint or share this text without limitations[^4]._
 
+Update: **There is a [discussion at r/europe](http://www.reddit.com/r/europe/comments/1zoj1d/what_the_situation_in_ukraine_means_for_me_in/) about this post.**
+
 
 [^1]: I have huge respect for all the Russians and Belarusians who came out to support _peace_ in Ukraine and were arrested for that in Moscow, Minsk, St. Petersburg, elsewhere.
 
