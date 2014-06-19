@@ -18,30 +18,33 @@ comments:
 ---
 I added a couple of configuration lines and can now switch between Vim and a child shell session with `Alt+Left/Right`. Like this:
 
-```break
+~~~
 +-----+                 +-------+
 | Vim | -- Alt+Right -> | shell |
 |     |                 |       |
 |     | <- Alt+Left --- |       | 
 +-----+                 +-------+
-```
+~~~
+{: .break}
 
 It feels like a faster way for switching between file editing and project tasks via shell and helped me reduce the number of tabs I keep in GNOME Terminal.
 
 **`.vimrc` changes:**
 
-```break
+~~~
 map <A-Right> :sh<CR>
 map <A-Left> :q<CR>
-```
+~~~
+{: .break}
 
 **`.inputrc` changes:**
 
-```break
+~~~
 $if term=xterm
     "\e[1;3D":  "\C-d"
 $endif
-```
+~~~
+{: .break}
 
 Warning: this makes `Alt+Left` work like `Ctrl+D` (exit) in *all* of your shells.
 

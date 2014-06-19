@@ -10,7 +10,7 @@ However its default font size is too small for me. Until recently I found no way
 
 The trick is, you should use [userChrome.css]. This file is located in the directory of your Firefox profile (`~/.mozilla/firefox/hash.profile/userChrome.css`). If you don't have the file – create it. The code below sets the font family and size both for Web developer tools and Scratchpad:
 
-```break
+~~~ 
 /*  Styles for Web developer tools */
 @namespace url(http://www.w3.org/1999/xhtml);
 @-moz-document regexp("chrome://browser/content/devtools/.*"){
@@ -26,7 +26,8 @@ The trick is, you should use [userChrome.css]. This file is located in the direc
     font-family:    Droid Sans Mono, monospace;
     font-size:      10pt !important;
 }
-```
+~~~
+{: .break }
 
 [Scratchpad]:       https://developer.mozilla.org/en/docs/Tools/Scratchpad
 [userChrome.css]:   http://kb.mozillazine.org/index.php?title=UserChrome.css&printable=yes
