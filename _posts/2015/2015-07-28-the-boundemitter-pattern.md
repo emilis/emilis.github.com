@@ -47,7 +47,7 @@ Creating some object for holding the constant values:
 
 ~~~
 ...
-export.EVENTS = { write: "write" };
+exports.EVENTS = { write: "write" };
 ...
 ~~~
 {: .break}
